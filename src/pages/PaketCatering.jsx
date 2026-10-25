@@ -14,6 +14,7 @@ const packages = [
       'Menu bervariasi',
       'Gratis ongkir',
       'Tanpa MSG',
+      'Request Menu Favoritmu!',
     ],
   },
   {
@@ -28,6 +29,7 @@ const packages = [
       'Menu bervariasi',
       'Gratis ongkir',
       'Tanpa MSG',
+      'Request Menu Favoritmu!',
     ],
   },
   {
@@ -42,6 +44,7 @@ const packages = [
       'Menu bervariasi',
       'Gratis ongkir',
       'Tanpa MSG',
+      'Request Menu Favoritmu!',
     ],
   },
 ];
