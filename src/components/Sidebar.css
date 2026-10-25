@@ -267,3 +267,77 @@
     transition: none;
   }
 }
+
+.navbar-logout {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.navbar-logout button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.navbar-logout .navbar-icon {
+  color: #d9534f;
+}
+
+.navbar-logout .navbar-link:hover {
+  color: #d9534f;
+  background: #fff1f0;
+}
+
+.logout-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00000050;
+  z-index: 1000;
+}
+
+.logout-modal {
+  width: 320px;
+  max-width: calc(100% - 32px);
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #00000020;
+}
+
+.logout-modal h3 {
+  margin-top: 0;
+  color: #24242b;
+}
+
+.logout-modal p {
+  color: #666;
+}
+
+.logout-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.logout-actions button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-cancel {
+  background: #eee;
+  color: #333;
+}
+
+.logout-confirm {
+  background: #e9b928;
+  color: white;
+}

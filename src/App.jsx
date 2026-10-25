@@ -3,19 +3,21 @@ import Sidebar from "./components/Sidebar";
 import PaketCatering from "./pages/PaketCatering";
 import SettingsPage from "./pages/SettingsPage";
 import Dashboard from "./pages/Dashboard";
+import Pesanan from "./pages/Pesanan";
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
       <Sidebar />
+
       <main className="app-main" aria-label="Konten dashboard">
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/katering" element={<PaketCatering />} />
           <Route path="/anggota" element={null} />
-          <Route path="/pesanan" element={null} />
+          <Route path="/pesanan" element={<Pesanan />} />
           <Route path="/pengiriman" element={null} />
           <Route path="/laporan" element={null} />
           <Route path="/pengaturan" element={<SettingsPage />} />

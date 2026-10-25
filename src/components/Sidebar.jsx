@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import {
   ChevronRight,
   ClipboardList,
   FileText,
   LayoutDashboard,
+  LogOut,
   Menu,
   Settings,
   Truck,
@@ -14,6 +15,8 @@ import {
 } from "lucide-react";
 
 function Sidebar() {
+  const navigate = useNavigate();
+
   const NAV_ITEMS = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "katering", label: "Katering", icon: Utensils },
@@ -23,21 +26,27 @@ function Sidebar() {
     { id: "laporan", label: "Laporan", icon: FileText },
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
+
   const [isMobile, setIsMobile] = useState(() =>
     window.matchMedia("(max-width: 768px)").matches,
   );
+
   const [isCollapsed, setIsCollapsed] = useState(
     () => window.matchMedia("(max-width: 768px)").matches,
   );
 
+  const [showLogout, setShowLogout] = useState(false);
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
+
     function syncBreakpoint(event) {
       setIsMobile(event.matches);
       setIsCollapsed(event.matches);
     }
 
     mediaQuery.addEventListener("change", syncBreakpoint);
+
     return () => mediaQuery.removeEventListener("change", syncBreakpoint);
   }, []);
 
@@ -45,6 +54,11 @@ function Sidebar() {
     if (isMobile) {
       setIsCollapsed(true);
     }
+  }
+
+  function handleLogout() {
+    setShowLogout(false);
+    navigate("/dashboard");
   }
 
   return (
@@ -61,6 +75,7 @@ function Sidebar() {
             CE
           </span>
         </Link>
+
         <button
           type="button"
           className="navbar-toggle"
@@ -83,6 +98,7 @@ function Sidebar() {
         <ul className="navbar-list">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
+
             return (
               <li key={item.id}>
                 <NavLink
@@ -100,7 +116,9 @@ function Sidebar() {
                       <span className="navbar-icon">
                         <Icon size={20} aria-hidden="true" />
                       </span>
+
                       <span className="navbar-label">{item.label}</span>
+
                       {isActive && (
                         <span className="navbar-chevron">
                           <ChevronRight size={15} aria-hidden="true" />
@@ -114,6 +132,47 @@ function Sidebar() {
           })}
         </ul>
       </nav>
+
+      <div className="navbar-logout">
+        <button
+          type="button"
+          className="navbar-link"
+          onClick={() => setShowLogout(true)}
+          title={isCollapsed ? "Logout" : undefined}
+        >
+          <span className="navbar-icon">
+            <LogOut size={20} aria-hidden="true" />
+          </span>
+          <span className="navbar-label">Logout</span>
+        </button>
+      </div>
+
+      {showLogout && (
+        <div className="logout-overlay">
+          <div className="logout-modal">
+            <h3>Konfirmasi Logout</h3>
+            <p>Apakah kamu yakin ingin keluar dari CaterEase?</p>
+
+            <div className="logout-actions">
+              <button
+                type="button"
+                className="logout-cancel"
+                onClick={() => setShowLogout(false)}
+              >
+                Batal
+              </button>
+
+              <button
+                type="button"
+                className="logout-confirm"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </aside>
   );
 }
