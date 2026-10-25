@@ -48,10 +48,9 @@
 }
 
 .navbar-brand-full {
-  background: linear-gradient(100deg, #ffc800, #ff9f1c);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: #ff9f1c;
   font-size: 22px;
   font-weight: 700;
   line-height: 1.1;
@@ -214,13 +213,18 @@
 @media (max-width: 768px) {
   .navbar,
   .navbar-collapsed {
-    position: static;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    left: 0;
     width: 100%;
     height: auto;
     max-height: 100svh;
     padding: 0 16px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+    box-shadow: 0 8px 20px rgb(36 36 43 / 8%);
   }
 
   .navbar-header,
@@ -239,6 +243,10 @@
   }
 
   .navbar-collapsed .navbar-nav {
+    display: none;
+  }
+
+  .navbar-collapsed .navbar-heading {
     display: none;
   }
 
