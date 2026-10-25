@@ -2,7 +2,7 @@
   display: flex;
   min-height: 100svh;
   width: 100%;
-  background: var(--page-bg);
+  background: var(--page-bg, #f7f7fa);
 }
 
 .app-main {
@@ -11,3 +11,12 @@
   min-height: 100svh;
 }
 
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .app-main {
+    min-height: 0;
+  }
+}
