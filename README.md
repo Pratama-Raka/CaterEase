@@ -1,16 +1,8 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# CaterEase - Sistem Manajemen Catering
 
-Currently, two official plugins are available:
+![CaterEase Preview](https://via.placeholder.com/800x400.png?text=CaterEase+Dashboard+Preview) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+CaterEase adalah aplikasi *dashboard* admin berbasis web yang dirancang khusus untuk mempermudah pemilik usaha catering dalam mengelola operasional bisnis sehari-hari. Aplikasi ini mengintegrasikan pencatatan pesanan, pengelolaan data member, pengaturan menu mingguan, dan pemantauan jadwal pengiriman ke dalam satu platform digital yang terstruktur.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Proyek ini dibuat untuk memenuhi **Tugas Besar Mata Kuliah Perancangan dan Pemrograman Web (Frontend Development)**.
