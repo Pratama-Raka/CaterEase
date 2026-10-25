@@ -4,8 +4,8 @@ import './PaketCatering.css';
 const packages = [
   {
     id: 1,
-    name: 'Weekly Package',
-    description: 'Paket catering untuk kebutuhan satu minggu.',
+    name: 'Paket Mingguan',
+    description: 'Paket Katering untuk kebutuhan satu minggu.',
     price: 'Rp192.000',
     portions: '12 porsi',
     features: [
@@ -19,7 +19,7 @@ const packages = [
   },
   {
     id: 2,
-    name: 'Monthly Package',
+    name: 'Paket Bulanan',
     description: 'Pilihan praktis untuk kebutuhan satu bulan.',
     price: 'Rp720.000',
     portions: '48 porsi',
@@ -34,7 +34,7 @@ const packages = [
   },
   {
     id: 3,
-    name: 'Semester Package',
+    name: 'Paket Semester',
     description: 'Paket hemat untuk kebutuhan jangka panjang.',
     price: 'Rp4.464.000',
     portions: '288 porsi',
@@ -54,7 +54,7 @@ function PaketCatering() {
 
   const handleSave = () => {
     if (!selectedPackage) {
-      alert('Silakan pilih paket catering terlebih dahulu!');
+      alert('Silakan pilih paket Katering terlebih dahulu!');
       return;
     }
 
@@ -68,9 +68,9 @@ function PaketCatering() {
   return (
     <div className="package-page">
       <header className="package-header">
-        <h1>Paket Catering</h1>
+        <h1>Paket Katering</h1>
         <p>
-          Pilih paket catering yang sesuai dengan kebutuhanmu.
+          Pilih paket katering yang sesuai dengan kebutuhanmu.
           Praktis, lezat, dan hemat!
         </p>
       </header>
@@ -109,14 +109,14 @@ function PaketCatering() {
             >
               {selectedPackage === item.id
                 ? 'Paket Dipilih ✓'
-                : 'Select Package'}
+                : 'Paket Dipilih'}
             </button>
           </article>
         ))}
       </section>
 
       <button className="package-save" onClick={handleSave}>
-        Save Options
+        Simpan
       </button>
     </div>
   );
