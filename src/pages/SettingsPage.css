@@ -198,7 +198,7 @@
   overflow: hidden;
   margin-top: 32px;
   border-radius: 8px;
-  background: #745400;
+  background: #ff9f1c;
   color: #fffdf5;
 }
 
@@ -226,7 +226,7 @@
 .kitchen-note p {
   max-width: 400px;
   margin: 9px 0 0;
-  color: #fffdf5;
+  color: #fff1b8;
   font-size: 14px;
   line-height: 1.6;
 }

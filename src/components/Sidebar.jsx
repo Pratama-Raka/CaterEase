@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import {
   ChevronRight,
@@ -22,41 +23,44 @@ function Sidebar() {
     { id: "laporan", label: "Laporan", icon: FileText },
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
-  const [activeItem, setActiveItem] = useState(
-    () => window.location.hash.slice(1) || "dashboard",
+  const [isMobile, setIsMobile] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches,
   );
   const [isCollapsed, setIsCollapsed] = useState(
     () => window.matchMedia("(max-width: 768px)").matches,
   );
 
   useEffect(() => {
-    function syncActiveItem() {
-      setActiveItem(window.location.hash.slice(1) || "dashboard");
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    function syncBreakpoint(event) {
+      setIsMobile(event.matches);
+      setIsCollapsed(event.matches);
     }
 
-    window.addEventListener("hashchange", syncActiveItem);
-    return () => window.removeEventListener("hashchange", syncActiveItem);
+    mediaQuery.addEventListener("change", syncBreakpoint);
+    return () => mediaQuery.removeEventListener("change", syncBreakpoint);
   }, []);
 
-  function selectItem(id) {
-    setActiveItem(id);
-    if (window.matchMedia("(max-width: 768px)").matches) setIsCollapsed(true);
+  function closeMobileMenu() {
+    if (isMobile) {
+      setIsCollapsed(true);
+    }
   }
 
   return (
     <aside className={`navbar${isCollapsed ? " navbar-collapsed" : ""}`}>
       <div className="navbar-header">
-        <a
+        <Link
           className="navbar-brand"
-          href="#dashboard"
+          to="/dashboard"
           aria-label="Cater Ease"
-          onClick={() => setActiveItem("dashboard")}
+          onClick={closeMobileMenu}
         >
           <span className="navbar-brand-full">CaterEase</span>
           <span className="navbar-brand-mark" aria-hidden="true">
             CE
           </span>
-        </a>
+        </Link>
         <button
           type="button"
           className="navbar-toggle"
@@ -78,28 +82,33 @@ function Sidebar() {
       >
         <ul className="navbar-list">
           {NAV_ITEMS.map((item) => {
-            const isActive = activeItem === item.id;
             const Icon = item.icon;
             return (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={`navbar-link${isActive ? " is-active" : ""}`}
-                  onClick={() => selectItem(item.id)}
-                  aria-current={isActive ? "page" : undefined}
+                <NavLink
+                  to={`/${item.id}`}
+                  end
+                  className={({ isActive }) =>
+                    `navbar-link${isActive ? " is-active" : ""}`
+                  }
+                  onClick={closeMobileMenu}
                   aria-label={isCollapsed ? item.label : undefined}
                   title={isCollapsed ? item.label : undefined}
                 >
-                  <span className="navbar-icon">
-                    <Icon size={20} aria-hidden="true" />
-                  </span>
-                  <span className="navbar-label">{item.label}</span>
-                  {isActive && (
-                    <span className="navbar-chevron">
-                      <ChevronRight size={15} aria-hidden="true" />
-                    </span>
+                  {({ isActive }) => (
+                    <>
+                      <span className="navbar-icon">
+                        <Icon size={20} aria-hidden="true" />
+                      </span>
+                      <span className="navbar-label">{item.label}</span>
+                      {isActive && (
+                        <span className="navbar-chevron">
+                          <ChevronRight size={15} aria-hidden="true" />
+                        </span>
+                      )}
+                    </>
                   )}
-                </a>
+                </NavLink>
               </li>
             );
           })}
