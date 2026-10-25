@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Sidebar.css";
 import {
   ChevronRight,
@@ -22,10 +22,21 @@ function Sidebar() {
     { id: "laporan", label: "Laporan", icon: FileText },
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
-  const [activeItem, setActiveItem] = useState("dashboard");
+  const [activeItem, setActiveItem] = useState(
+    () => window.location.hash.slice(1) || "dashboard",
+  );
   const [isCollapsed, setIsCollapsed] = useState(
     () => window.matchMedia("(max-width: 768px)").matches,
   );
+
+  useEffect(() => {
+    function syncActiveItem() {
+      setActiveItem(window.location.hash.slice(1) || "dashboard");
+    }
+
+    window.addEventListener("hashchange", syncActiveItem);
+    return () => window.removeEventListener("hashchange", syncActiveItem);
+  }, []);
 
   function selectItem(id) {
     setActiveItem(id);
