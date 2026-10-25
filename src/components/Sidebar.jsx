@@ -12,7 +12,7 @@ import {
   UsersRound,
 } from "lucide-react";
 
-function Sidebar() {
+function Sidebar({activeItem, onSelectItem}) {
   const NAV_ITEMS = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "katering", label: "Katering", icon: Utensils },
@@ -22,15 +22,18 @@ function Sidebar() {
     { id: "laporan", label: "Laporan", icon: FileText },
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
-  const [activeItem, setActiveItem] = useState("dashboard");
+
   const [isCollapsed, setIsCollapsed] = useState(
     () => window.matchMedia("(max-width: 768px)").matches,
   );
 
-  function selectItem(id) {
-    setActiveItem(id);
-    if (window.matchMedia("(max-width: 768px)").matches) setIsCollapsed(true);
+function selectItem(id) {
+  onSelectItem(id);
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    setIsCollapsed(true);
   }
+}
 
   return (
     <aside className={`navbar${isCollapsed ? " navbar-collapsed" : ""}`}>
@@ -39,7 +42,7 @@ function Sidebar() {
           className="navbar-brand"
           href="#dashboard"
           aria-label="Cater Ease"
-          onClick={() => setActiveItem("dashboard")}
+          onClick={() => onSelectItem("dashboard")}
         >
           <span className="navbar-brand-full">CaterEase</span>
           <span className="navbar-brand-mark" aria-hidden="true">
