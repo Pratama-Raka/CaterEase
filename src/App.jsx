@@ -4,7 +4,14 @@ import PaketCatering from './pages/PaketCatering';
 import './App.css';
 
 function App() {
-  const [activePage, setActivePage] = useState('dashboard');
+  const [activePage, setActivePage] = useState(() =>{
+    return localStorage.getItem('activePage') || 'dashboard';
+  });
+
+function handleSelectPage(page) {
+  setActivePage(page);
+  localStorage.setItem('activePage', page);
+}
 
   function renderPage() {
     switch (activePage) {
@@ -38,7 +45,7 @@ function App() {
     <div className="app">
       <Sidebar
         activeItem={activePage}
-        onSelectItem={setActivePage}
+        onSelectItem={handleSelectPage}
       />
 
       <main className="app-main" aria-label="Konten dashboard">
