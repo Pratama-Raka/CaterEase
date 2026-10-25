@@ -876,3 +876,166 @@
         box-shadow: none
     }
 }
+
+/* =======================================================
+   CaterEase Dashboard — layout rapi seperti halaman Pesanan
+   Menargetkan class asli JSX (.ce-*), bukan .dashboard-page
+   Tidak mengubah App.css, Sidebar.css, atau halaman lain.
+   ======================================================= */
+
+/* JANGAN memakai margin negatif. Padding 24px dari .app-main
+   milik kelompok tetap menjadi jarak aman dari sidebar dan layar. */
+.ce-dashboard {
+  margin: 0;
+  min-height: auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+.ce-dashboard *, .ce-dashboard *::before, .ce-dashboard *::after {
+  box-sizing: border-box;
+}
+
+/* Batasi lebar halaman agar kartu tidak memanjang sampai pinggir. */
+.ce-topbar,
+.ce-content {
+  width: min(100%, 1210px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header menjadi kartu putih dengan ruang di semua sisinya. */
+.ce-topbar {
+  height: 76px;
+  min-height: 76px;
+  padding: 12px 24px;
+  border-radius: 18px;
+  gap: 18px;
+  overflow: visible;
+}
+.ce-top-actions {
+  gap: 15px;
+  flex-shrink: 0;
+}
+.ce-icon-button { padding: 10px; }
+.ce-bubble {
+  top: -1px;
+  right: -1px;
+}
+.ce-profile-anchor {
+  padding-left: 16px;
+  flex-shrink: 0;
+}
+.ce-profile-avatar { width: 38px; height: 38px; }
+.ce-profile { gap: 9px; }
+.ce-search-global {
+  width: 270px;
+  max-width: 35%;
+  padding: 12px 17px;
+}
+
+/* Beri jarak jelas antara header, judul, dan ringkasan. */
+.ce-content { padding: 22px 0 40px; }
+.ce-heading-row { margin-bottom: 18px; }
+.ce-heading-row h1 { margin-left: 0; font-size: 23px; }
+.ce-search-secondary { width: 300px; padding: 12px 17px; }
+.ce-switch-button { width: 44px; height: 44px; }
+
+/* Kartu ringkasan lebih pendek dan proporsional. */
+.ce-stats {
+  grid-template-columns: 1fr 1fr 0.78fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.ce-stat {
+  min-height: 0;
+  height: 135px;
+  padding: 16px 19px 14px;
+  border-radius: 17px;
+  box-shadow: 0 3px 8px #00000012;
+}
+.ce-stat h2 { font-size: 14px; margin-bottom: 12px; }
+.ce-stat-number { font-size: 33px; }
+.ce-stat p { font-size: 10.5px; margin: 8px 0 6px; }
+.ce-stat span { font-size: 10.5px; }
+
+/* Grafik dan penghasilan diperkecil senada dengan ringkasan. */
+.ce-analytics {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.ce-chart-panel,
+.ce-income,
+.ce-members-panel {
+  min-width: 0;
+  border-radius: 17px;
+  box-shadow: 0 3px 12px #0000000b;
+}
+.ce-chart-panel { min-height: 0; padding: 16px 20px 12px; }
+.ce-chart-svg { height: 165px; max-width: 100%; }
+.ce-income { min-height: 0; padding: 19px 22px; }
+.ce-income h2 { font-size: 15px; margin-bottom: 15px; }
+.ce-income-number { font-size: clamp(24px, 2.35vw, 34px); }
+.ce-members-panel { padding: 17px 18px 18px; }
+
+/* Tabel boleh memanjang ke bawah sesuai banyaknya anggota. */
+.ce-table-scroll { max-width: 100%; }
+
+@media (max-width: 1100px) {
+  .ce-topbar { padding: 11px 15px; gap: 10px; }
+  .ce-top-actions { gap: 6px; }
+  .ce-profile-anchor { padding-left: 9px; }
+  .ce-search-global { width: 215px; }
+  .ce-stat { padding: 15px; }
+  .ce-income-number { font-size: 26px; }
+}
+@media (max-width: 800px) {
+  .ce-dashboard { margin: 0; }
+  .ce-topbar { height: auto; min-height: 68px; flex-wrap: wrap; }
+  .ce-content { padding: 16px 0 28px; }
+  .ce-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ce-stat-package { grid-column: span 2; }
+  .ce-analytics { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 500px) {
+  .ce-topbar { padding: 10px 12px; }
+  .ce-search-global { width: 125px; max-width: none; }
+  .ce-top-actions { gap: 0; }
+  .ce-stat { height: auto; min-height: 122px; }
+  .ce-income-number { font-size: 25px; }
+}
+
+/* =========================================
+   PERBAIKAN HEADER DAN CARD TOTAL PAKET
+   ========================================= */
+
+/* Turunkan posisi header agar tidak mepet atas */
+@media screen {
+  .ce-dashboard {
+    padding-top: 16px;
+    box-sizing: border-box;
+  }
+
+  .ce-topbar {
+    min-height: 88px;
+    padding: 12px 30px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+}
+
+/* Samakan isi Total Paket dengan Total Order */
+.ce-dashboard .ce-stat-package {
+  text-align: left;
+}
+
+.ce-dashboard .ce-stat-package .ce-stat-number {
+  justify-content: flex-start;
+}
+
+.ce-dashboard .ce-stat-package h2,
+.ce-dashboard .ce-stat-package p {
+  text-align: left;
+}
