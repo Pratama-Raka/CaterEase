@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Search, UserRound, CalendarDays, MapPin } from "lucide-react";
 import "./Pesanan.css";
@@ -23,8 +22,8 @@ const orders = [
     acara: "Ulang Tahun Anak",
     alamat: "Jl. Sidoarjo no 89",
     paket: "Paket Gold",
-    porsi: 100,
-    harga: 50000,
+    porsi: 500,
+    harga: 55000,
   },
 ];
 
