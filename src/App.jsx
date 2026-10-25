@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import PaketCatering from "./pages/PaketCatering";
 import SettingsPage from "./pages/SettingsPage";
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <main className="app-main" aria-label="Konten dashboard">
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={null} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/katering" element={<PaketCatering />} />
           <Route path="/anggota" element={null} />
           <Route path="/pesanan" element={null} />
