@@ -4,6 +4,9 @@ import PaketCatering from "./pages/PaketCatering";
 import SettingsPage from "./pages/SettingsPage";
 import Dashboard from "./pages/Dashboard";
 import Pesanan from "./pages/Pesanan";
+import Pengiriman from "./pages/Pengiriman";
+import Anggota from "./pages/anggota";
+import "./theme.css";
 import "./App.css";
 
 function App() {
@@ -16,11 +19,11 @@ function App() {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/katering" element={<PaketCatering />} />
-          <Route path="/anggota" element={null} />
+          <Route path="/anggota" element={<Anggota />} />
           <Route path="/pesanan" element={<Pesanan />} />
-          <Route path="/pengiriman" element={null} />
           <Route path="/laporan" element={null} />
           <Route path="/pengaturan" element={<SettingsPage />} />
+          <Route path="/pengiriman" element={<Pengiriman />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </main>
