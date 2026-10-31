@@ -126,9 +126,6 @@
   border-radius: 5px;
   background: #fff4c2;
   color: #765900;
-  transition:
-    background-color 0.16s ease,
-    color 0.16s ease;
 }
 
 .profile-edit:hover {
