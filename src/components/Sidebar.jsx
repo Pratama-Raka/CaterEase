@@ -27,8 +27,8 @@ function Sidebar() {
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
 
-  const [isMobile, setIsMobile] = useState(() =>
-    window.matchMedia("(max-width: 768px)").matches,
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 768px)").matches,
   );
 
   const [isCollapsed, setIsCollapsed] = useState(
@@ -58,7 +58,7 @@ function Sidebar() {
 
   function handleLogout() {
     setShowLogout(false);
-    navigate("/dashboard");
+    navigate("/login");
   }
 
   return (

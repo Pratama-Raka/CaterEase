@@ -148,7 +148,6 @@ const Anggota = () => {
           </div>
         </div>
       )}
-
     </div>
   );
 };

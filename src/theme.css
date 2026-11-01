@@ -1,0 +1,153 @@
+/* Shared visual polish for existing React screens. */
+.navbar {
+  box-shadow: 7px 0 28px #202a4005;
+  z-index: 2;
+}
+.navbar-header {
+  padding-bottom: 20px;
+}
+.navbar-link {
+  border-radius: 12px;
+  font-weight: 600;
+}
+.navbar-link.is-active {
+  background: #fff3d7;
+  color: #ad7d27;
+}
+.navbar-link.is-active .navbar-icon {
+  color: #d6a23f;
+}
+.navbar-list {
+  gap: 6px;
+}
+.ce-dashboard {
+  background: #f7f8fb !important;
+  font-family: Inter, "Segoe UI", sans-serif !important;
+  color: #283044;
+}
+.ce-topbar {
+  background: #fff;
+  border-bottom: 1px solid #eef0f4;
+  height: 86px;
+}
+.ce-content {
+  padding: 32px clamp(22px, 3vw, 50px) 60px !important;
+}
+.ce-heading-row h1 {
+  font-size: 33px !important;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+.ce-search {
+  background: #f6f7fa;
+}
+.ce-stats {
+  gap: 18px !important;
+}
+.ce-stat,
+.ce-chart-panel,
+.ce-income,
+.ce-members-panel {
+  border-radius: 18px !important;
+  border: 1px solid #eff0f4 !important;
+  box-shadow: 0 12px 35px #252f4708 !important;
+}
+.ce-stat {
+  background: white !important;
+  padding: 25px !important;
+}
+.ce-stat h2 {
+  color: #7c8598;
+  font-weight: 700;
+}
+.ce-stat-number {
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.ce-stat p,
+.ce-stat span {
+  color: #a1a7b4;
+}
+.ce-chart-panel,
+.ce-members-panel {
+  background: #fff !important;
+}
+.ce-income {
+  background: linear-gradient(135deg, #f6dc9c, #e4b34f) !important;
+  color: #3d3422 !important;
+}
+.ce-members-table th {
+  background: #f8f9fb !important;
+  color: #9299a6 !important;
+}
+.ce-members-table td {
+  border-bottom: 1px solid #f0f1f5 !important;
+}
+.ce-members-table tbody tr:hover {
+  background: #fffcf5;
+}
+.ce-status {
+  border-radius: 8px !important;
+}
+.ce-icon-button:hover,
+.ce-switch-button:hover {
+  background: #fff7e9;
+}
+.package-page,
+.settings-page,
+.pesanan {
+  background: #f7f8fb !important;
+  min-height: 100vh;
+}
+.package-header h1,
+.settings-heading h1 {
+  letter-spacing: -1px;
+}
+.package-card,
+.profile-summary,
+.settings-page section,
+.order-list,
+.order-detail {
+  border-radius: 18px;
+  box-shadow: 0 12px 35px #242b4509;
+}
+.package-card {
+  border: 1px solid #eff0f4;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 17px 45px #242b4514;
+}
+.package-card.selected {
+  border-color: #d9aa4b;
+}
+.package-button,
+.package-save {
+  border-radius: 11px;
+}
+.pesanan {
+  gap: 20px;
+}
+.pesanan .order-list,
+.pesanan .order-detail {
+  border: 1px solid #edf0f4;
+  background: white;
+}
+@media (max-width: 768px) {
+  .ce-content {
+    padding: 24px 15px 40px !important;
+  }
+  .ce-heading-row h1 {
+    font-size: 27px !important;
+  }
+  .ce-topbar {
+    height: auto;
+    min-height: 72px;
+  }
+  .navbar {
+    z-index: 20;
+  }
+}
