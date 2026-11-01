@@ -2,10 +2,8 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import PaketCatering from "./pages/PaketCatering";
 import SettingsPage from "./pages/SettingsPage";
-import Anggota from "./pages/Anggota";
 import Dashboard from "./pages/Dashboard";
 import Pesanan from "./pages/Pesanan";
-import Pengiriman from "./pages/Pengiriman";
 import Anggota from "./pages/anggota";
 import LoginPage from "./pages/LoginPage";
 import "./theme.css";
@@ -28,7 +26,7 @@ function App() {
           <Route path="/pesanan" element={<Pesanan />} />
           <Route path="/laporan" element={null} />
           <Route path="/pengaturan" element={<SettingsPage />} />
-          <Route path="/pengiriman" element={<Pengiriman />} />
+          <Route path="/pengiriman" element={null} />
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </main>

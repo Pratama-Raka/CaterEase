@@ -32,8 +32,10 @@
 }
 
 .profile-summary {
-  padding: 8px 24px 24px 0;
-  border-right: 1px solid #eeeef2;
+  padding: 24px 22px;
+  border: 1px solid #eeeef2;
+  border-radius: 12px;
+  background: #fff;
 }
 
 .profile-avatar {
