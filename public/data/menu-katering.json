@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "day": "Senin",
+    "items": [
+      {
+        "id": 1,
+        "name": "Ayam Teriyaki",
+        "image": "/images/menu/ayam teriyaki.webp"
+      },
+      {
+        "id": 2,
+        "name": "Cah Kangkung",
+        "image": "/images/menu/cah-kangkung.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Telur Balado",
+        "image": "/images/menu/telur-balado.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Capcay",
+        "image": "/images/menu/capcay.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "day": "Selasa",
+    "items": [
+      {
+        "id": 5,
+        "name": "Ayam Katsu",
+        "image": "/images/menu/ayam-katsu.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Sayur Sop",
+        "image": "/images/menu/sayur sop.webp"
+      },
+      {
+        "id": 7,
+        "name": "Tempe Orek",
+        "image": "/images/menu/tempe-orek.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Kentang Puyuh",
+        "image": "/images/menu/kentang-puyuh.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "day": "Rabu",
+    "items": [
+      {
+        "id": 9,
+        "name": "Ayam Kecap",
+        "image": "/images/menu/ayam-kecap.avif"
+      },
+      {
+        "id": 10,
+        "name": "Sayur Bayam",
+        "image": "/images/menu/sayur-bayam.webp"
+      },
+      {
+        "id": 11,
+        "name": "Rendang",
+        "image": "/images/menu/rendang.webp"
+      },
+      {
+        "id": 12,
+        "name": "Ayam Rica-Rica",
+        "image": "/images/menu/ayam-rica.jpg"
+      }
+    ]
+  }
+]

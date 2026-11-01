@@ -20,6 +20,7 @@ function Sidebar() {
   const NAV_ITEMS = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "katering", label: "Katering", icon: Utensils },
+    { id: "menu-katering", label: "Menu Katering", icon: Utensils },
     { id: "anggota", label: "Anggota", icon: UsersRound },
     { id: "pesanan", label: "Pesanan", icon: ClipboardList },
     { id: "pengiriman", label: "Pengiriman", icon: Truck },
