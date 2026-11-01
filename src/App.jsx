@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import PaketCatering from "./pages/PaketCatering";
 import SettingsPage from "./pages/SettingsPage";
+import Anggota from "./pages/Anggota";
 import Dashboard from "./pages/Dashboard";
 import Pesanan from "./pages/Pesanan";
 import Pengiriman from "./pages/Pengiriman";
