@@ -1,26 +1,35 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import PaketCatering from "./pages/PaketCatering";
+import MenuKatering from "./pages/MenuKatering";
 import SettingsPage from "./pages/SettingsPage";
+import Anggota from "./pages/anggota";
+import Dashboard from "./pages/Dashboard";
 import Pesanan from "./pages/Pesanan";
+import LoginPage from "./pages/LoginPage";
+import "./theme.css";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="app">
-      <Sidebar />
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
 
-      <main className="app-main" aria-label="Konten dashboard">
+  return (
+    <div className={`app ${isLoginPage ? "app-auth" : ""}`}>
+      {!isLoginPage && <Sidebar />}
+
+      <main className={`app-main ${isLoginPage ? "auth-main" : ""}`} aria-label="Konten dashboard">
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={null} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/katering" element={<PaketCatering />} />
-          <Route path="/anggota" element={null} />
+          <Route path="/menu-katering" element={<MenuKatering />} />
+          <Route path="/anggota" element={<Anggota />} />
           <Route path="/pesanan" element={<Pesanan />} />
-          <Route path="/pengiriman" element={null} />
           <Route path="/laporan" element={null} />
           <Route path="/pengaturan" element={<SettingsPage />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/pengiriman" element={null} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </main>
     </div>

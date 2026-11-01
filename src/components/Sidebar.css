@@ -9,12 +9,13 @@
 
   position: sticky;
   top: 0;
-  align-self: flex-start;
+  align-self: stretch;
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 0 252px;
   flex-direction: column;
   width: 252px;
-  height: 100svh;
+  height: 100vh;
+  max-height: 100vh;
   padding: 18px 14px 24px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -22,6 +23,7 @@
   border-right: 1px solid var(--line);
   transition:
     width 0.2s ease,
+    flex-basis 0.2s ease,
     padding 0.2s ease;
 }
 
@@ -183,6 +185,7 @@
 
 .navbar-collapsed {
   width: 84px;
+  flex-basis: 84px;
   padding-right: 10px;
   padding-left: 10px;
 }

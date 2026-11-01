@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import {
+  BookOpen,
   ChevronRight,
   ClipboardList,
   FileText,
@@ -19,7 +20,8 @@ function Sidebar() {
 
   const NAV_ITEMS = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { id: "katering", label: "Katering", icon: Utensils },
+    { id: "katering", label: "Paket Katering", icon: Utensils  },
+    { id: "menu-katering", label: "Menu Katering", icon: BookOpen  },
     { id: "anggota", label: "Anggota", icon: UsersRound },
     { id: "pesanan", label: "Pesanan", icon: ClipboardList },
     { id: "pengiriman", label: "Pengiriman", icon: Truck },
@@ -27,8 +29,8 @@ function Sidebar() {
     { id: "pengaturan", label: "Pengaturan", icon: Settings },
   ];
 
-  const [isMobile, setIsMobile] = useState(() =>
-    window.matchMedia("(max-width: 768px)").matches,
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 768px)").matches,
   );
 
   const [isCollapsed, setIsCollapsed] = useState(
@@ -58,7 +60,7 @@ function Sidebar() {
 
   function handleLogout() {
     setShowLogout(false);
-    navigate("/dashboard");
+    navigate("/login");
   }
 
   return (
