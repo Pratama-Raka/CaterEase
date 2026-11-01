@@ -2,78 +2,215 @@
   {
     "id": 1,
     "day": "Senin",
-    "items": [
+    "meals": [
       {
         "id": 1,
-        "name": "Ayam Teriyaki",
-        "image": "/images/menu/ayam teriyaki.webp"
+        "mealTime": "Pagi",
+        "items": [
+          {
+            "id": 1,
+            "name": "Ayam Teriyaki",
+            "image": "/images/menu/ayam teriyaki.webp"
+          },
+          {
+            "id": 2,
+            "name": "Telur Balado",
+            "image": "/images/menu/telur-balado.jpg"
+          },
+          {
+            "id": 3,
+            "name": "Ayam Kecap",
+            "image": "/images/menu/ayam-kecap.avif"
+          }
+        ]
       },
       {
         "id": 2,
-        "name": "Cah Kangkung",
-        "image": "/images/menu/cah-kangkung.jpg"
-      },
-      {
-        "id": 3,
-        "name": "Telur Balado",
-        "image": "/images/menu/telur-balado.jpg"
-      },
-      {
-        "id": 4,
-        "name": "Capcay",
-        "image": "/images/menu/capcay.jpg"
+        "mealTime": "Malam",
+        "items": [
+          {
+            "id": 4,
+            "name": "Rendang",
+            "image": "/images/menu/rendang.webp"
+          },
+          {
+            "id": 5,
+            "name": "Ayam Rica-Rica",
+            "image": "/images/menu/ayam-rica.jpg"
+          }
+        ]
       }
     ]
   },
   {
     "id": 2,
     "day": "Selasa",
-    "items": [
+    "meals": [
       {
-        "id": 5,
-        "name": "Ayam Katsu",
-        "image": "/images/menu/ayam-katsu.jpg"
+        "id": 3,
+        "mealTime": "Pagi",
+        "items": [
+          {
+            "id": 6,
+            "name": "Ayam Katsu",
+            "image": "/images/menu/ayam-katsu.jpg"
+          },
+          {
+            "id": 7,
+            "name": "Telur Balado",
+            "image": "/images/menu/telur-balado.jpg"
+          }
+        ]
       },
       {
-        "id": 6,
-        "name": "Sayur Sop",
-        "image": "/images/menu/sayur sop.webp"
-      },
-      {
-        "id": 7,
-        "name": "Tempe Orek",
-        "image": "/images/menu/tempe-orek.jpg"
-      },
-      {
-        "id": 8,
-        "name": "Kentang Puyuh",
-        "image": "/images/menu/kentang-puyuh.jpg"
+        "id": 4,
+        "mealTime": "Malam",
+        "items": [
+          {
+            "id": 8,
+            "name": "Ayam Kecap",
+            "image": "/images/menu/ayam-kecap.avif"
+          },
+          {
+            "id": 9,
+            "name": "Rendang",
+            "image": "/images/menu/rendang.webp"
+          },
+          {
+            "id": 10,
+            "name": "Ayam Teriyaki",
+            "image": "/images/menu/ayam teriyaki.webp"
+          }
+        ]
       }
     ]
   },
   {
     "id": 3,
     "day": "Rabu",
-    "items": [
+    "meals": [
+      {
+        "id": 5,
+        "mealTime": "Pagi",
+        "items": [
+          {
+            "id": 11,
+            "name": "Ayam Rica-Rica",
+            "image": "/images/menu/ayam-rica.jpg"
+          },
+          {
+            "id": 12,
+            "name": "Tempe Orek",
+            "image": "/images/menu/tempe-orek.jpg"
+          },
+          {
+            "id": 13,
+            "name": "Ayam Katsu",
+            "image": "/images/menu/ayam-katsu.jpg"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "mealTime": "Malam",
+        "items": [
+          {
+            "id": 14,
+            "name": "Rendang",
+            "image": "/images/menu/rendang.webp"
+          },
+          {
+            "id": 15,
+            "name": "Capcay",
+            "image": "/images/menu/capcay.jpg"
+          },
+          {
+            "id": 16,
+            "name": "Ayam Teriyaki",
+            "image": "/images/menu/ayam teriyaki.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "day": "Kamis",
+    "meals": [
+      {
+        "id": 7,
+        "mealTime": "Pagi",
+        "items": [
+          {
+            "id": 17,
+            "name": "Ayam Kecap",
+            "image": "/images/menu/ayam-kecap.avif"
+          },
+          {
+            "id": 18,
+            "name": "Kentang Puyuh",
+            "image": "/images/menu/kentang-puyuh.jpg"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "mealTime": "Malam",
+        "items": [
+          {
+            "id": 19,
+            "name": "Ayam Katsu",
+            "image": "/images/menu/ayam-katsu.jpg"
+          },
+          {
+            "id": 20,
+            "name": "Sayur Sop",
+            "image": "/images/menu/sayur sop.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "day": "Jumat",
+    "meals": [
       {
         "id": 9,
-        "name": "Ayam Kecap",
-        "image": "/images/menu/ayam-kecap.avif"
+        "mealTime": "Pagi",
+        "items": [
+          {
+            "id": 21,
+            "name": "Rendang",
+            "image": "/images/menu/rendang.webp"
+          },
+          {
+            "id": 22,
+            "name": "Cah Kangkung",
+            "image": "/images/menu/cah-kangkung.jpg"
+          },
+          {
+            "id": 23,
+            "name": "Telur Balado",
+            "image": "/images/menu/telur-balado.jpg"
+          }
+        ]
       },
       {
         "id": 10,
-        "name": "Sayur Bayam",
-        "image": "/images/menu/sayur-bayam.webp"
-      },
-      {
-        "id": 11,
-        "name": "Rendang",
-        "image": "/images/menu/rendang.webp"
-      },
-      {
-        "id": 12,
-        "name": "Ayam Rica-Rica",
-        "image": "/images/menu/ayam-rica.jpg"
+        "mealTime": "Malam",
+        "items": [
+          {
+            "id": 24,
+            "name": "Ayam Rica-Rica",
+            "image": "/images/menu/ayam-rica.jpg"
+          },
+          {
+            "id": 25,
+            "name": "Sayur Bayam",
+            "image": "/images/menu/sayur-bayam.webp"
+          }
+        ]
       }
     ]
   }

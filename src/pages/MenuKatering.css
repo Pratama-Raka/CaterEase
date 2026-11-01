@@ -70,10 +70,25 @@
   color: #333;
 }
 
+.menu-meal {
+  margin-bottom: 24px;
+}
+
+.menu-meal > h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #555;
+}
+
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+}
+
+.menu-card-selected {
+  border: 2px solid #5c9b63;
 }
 
 .menu-card {

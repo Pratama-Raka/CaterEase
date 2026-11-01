@@ -4,7 +4,7 @@ import './MenuKatering.css';
 
 function MenuKatering() {
     const [menu, setMenu] = useState([]);
-    const [selectedMenu, setSelectedMenu] = useState([]);
+    const [selectedMenu, setSelectedMenu] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -32,12 +32,11 @@ function MenuKatering() {
         fetchMenu();
     }, []);
 
-    const handleSelectMenu = (id) => {
-        setSelectedMenu((prev) =>
-            prev.includes(id)
-                ? prev.filter((item) => item !== id)
-                : [...prev, id]
-        );
+    const handleSelectMenu = (mealId, itemId) => {
+        setSelectedMenu((prev) => ({
+            ...prev,
+            [mealId]: prev[mealId] === itemId ? null : itemId
+        }));
     };
 
     if (loading) {
@@ -70,11 +69,10 @@ function MenuKatering() {
 
                 <div className="menu-title">
                     <div>
-                        <h1>Menu Mingguan</h1>
-                        <p>Pilih menu favoritmu setiap hari</p>
+                        <h1>Menu Katering Mingguan</h1>
+                        <p>Pilih menu favoritmu untuk makan pagi dan malam</p>
                     </div>
                 </div>
-
 
                 {menu.map((day, index) => (
                     <section className="menu-day" key={day.id}>
@@ -89,52 +87,66 @@ function MenuKatering() {
                             )}
                         </div>
 
+                        {day.meals.map((meal) => (
+                            <div className="menu-meal" key={meal.id}>
+                                <h3>{meal.mealTime}</h3>
 
-                        <div className="menu-grid">
-                            {day.items.map((item) => {
-                                const isSelected = selectedMenu.includes(item.id);
+                                <div className="menu-grid">
+                                    {meal.items.map((item) => {
+                                        const isSelected =
+                                            selectedMenu[meal.id] === item.id;
 
-                                return (
-                                    <div className="menu-card" key={item.id}>
-                                        <div className="menu-image">
-                                            {item.image ? (
-                                                <img src={item.image} alt={item.name} />
-                                            ) : (
-                                                <div className="menu-image-placeholder">
-                                                    <ImageIcon size={32} />
-                                                    <span>Foto Menu</span>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <div className="menu-card-info">
-                                            <h3>{item.name}</h3>
-
-                                            <button
-                                                className={`menu-select-button ${isSelected ? 'selected' : ''
-                                                    }`}
-                                                onClick={() => handleSelectMenu(item.id)}
-                                                aria-label={
-                                                    isSelected
-                                                        ? `Batalkan pilihan ${item.name}`
-                                                        : `Pilih ${item.name}`
-                                                }
+                                        return (
+                                            <div
+                                                className={`menu-card ${isSelected ? 'menu-card-selected' : ''}`}
+                                                key={item.id}
                                             >
-                                                {isSelected ? (
-                                                    <Check size={20} />
-                                                ) : (
-                                                    <Plus size={20} />
-                                                )}
-                                            </button>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                                                <div className="menu-image">
+                                                    {item.image ? (
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                        />
+                                                    ) : (
+                                                        <div className="menu-image-placeholder">
+                                                            <ImageIcon size={32} />
+                                                            <span>Foto Menu</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                <div className="menu-card-info">
+                                                    <h3>{item.name}</h3>
+
+                                                    <button
+                                                        className={`menu-select-button ${isSelected ? 'selected' : ''}`}
+                                                        onClick={() =>
+                                                            handleSelectMenu(meal.id, item.id)
+                                                        }
+                                                        aria-label={
+                                                            isSelected
+                                                                ? `Batalkan pilihan ${item.name}`
+                                                                : `Pilih ${item.name}`
+                                                        }
+                                                    >
+                                                        {isSelected ? (
+                                                            <Check size={20} />
+                                                        ) : (
+                                                            <Plus size={20} />
+                                                        )}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        ))}
                     </section>
                 ))}
+
             </div>
-        </div >
+        </div>
     );
 }
 
