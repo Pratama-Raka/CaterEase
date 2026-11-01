@@ -253,6 +253,10 @@
     display: none;
   }
 
+  .navbar-collapsed .navbar-logout {
+    display: none;
+  }
+
   .navbar-heading {
     padding: 4px 12px 9px;
   }
