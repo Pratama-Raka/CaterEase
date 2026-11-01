@@ -7,13 +7,36 @@
   font-family: Arial, sans-serif;
 }
 
-.menu-content {
-  max-width: 1200px;
-  margin: 0 auto;
+.menu-title {
+  margin-bottom: 32px;
 }
 
 .menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   margin-bottom: 32px;
+}
+
+.manage-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff2d5;
+  color: #b98222;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.manage-menu-button:hover {
+  background-color: #ffe8b5;
 }
 
 .menu-title h1 {
@@ -33,8 +56,15 @@
   margin-bottom: 36px;
 }
 
-.menu-day h2 {
+.menu-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 18px;
+}
+
+.menu-day-header h2 {
+  margin: 0;
   font-size: 21px;
   font-weight: 700;
   color: #333;
@@ -176,6 +206,11 @@
 
   .menu-title h1 {
     font-size: 24px;
+  }
+
+  .menu-title {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .menu-grid {
