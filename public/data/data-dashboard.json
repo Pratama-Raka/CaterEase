@@ -1,0 +1,26 @@
+{
+  "summary": {
+    "totalOrder": 420,
+    "totalMember": 45,
+    "totalPaket": 5,
+    "totalIncome": 40000000
+  },
+  "members": [
+    {
+      "id": 1,
+      "name": "Craven C",
+      "place": "Kost Raffles",
+      "package": "Weekly",
+      "date": "17/April/2026",
+      "status": "On Going"
+    },
+    {
+      "id": 2,
+      "name": "Yeremia Hot",
+      "place": "Dormitory no 3",
+      "package": "Monthly",
+      "date": "10/April/2026",
+      "status": "On Going"
+    }
+  ]
+}
