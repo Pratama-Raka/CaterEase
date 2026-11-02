@@ -4,65 +4,8 @@
   background: #f8f9fc;
   color: #282d40;
   font-family: "Inter", "Segoe UI", sans-serif;
-  font-size: 13px;
 }
 
-/* Header */
-.kirim-topbar {
-  height: 75px;
-  padding: 0 35px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 35px;
-  background: white;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.kirim-icons {
-  position: relative;
-  color: #888;
-}
-
-.kirim-dot {
-  position: absolute;
-  top: -4px;
-  right: -5px;
-  width: 9px;
-  height: 9px;
-  background: #f4ba40;
-  border-radius: 50%;
-}
-
-.kirim-admin {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.kirim-admin span {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.kirim-admin small {
-  display: block;
-  font-size: 10px;
-  color: #999;
-}
-
-.kirim-avatar {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  background: #ffe4b3;
-  color: #a4772b;
-  font-weight: 700;
-}
-
-/* Judul halaman */
 .kirim-heading {
   padding: 30px 35px 5px;
 }
@@ -70,8 +13,6 @@
 .kirim-heading h1 {
   font-size: 28px;
   font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
 }
 
 .kirim-heading p {
@@ -79,16 +20,13 @@
   font-size: 13px;
 }
 
-/* Tata letak */
 .kirim-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: 22px;
-  padding: 25px 35px 45px;
-  align-items: stretch;
+  padding: 25px 35px;
 }
 
-/* Kartu utama */
 .kirim-card {
   min-width: 0;
   min-height: 570px;
@@ -99,30 +37,9 @@
   box-shadow: 0 8px 28px rgba(35, 42, 65, 0.09);
 }
 
-/* Pencarian pesanan */
-.kirim-search {
-  width: 100%;
-  max-width: 300px;
-  height: 43px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
-  margin-bottom: 25px;
-  color: #d9a12d;
-  background: #f7f8fa;
-  border-radius: 25px;
-}
-
-.kirim-search input,
-.kirim-search input:focus {
-  width: 100%;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: transparent;
-  font-size: 12px;
-  color: #444;
+.kirim-card h2 {
+  font-size: 19px;
+  font-weight: 700;
 }
 
 /* Daftar pesanan */
@@ -135,7 +52,7 @@
 }
 
 .kirim-table-head {
-  padding: 0 12px 12px;
+  padding: 0 10px 12px;
   color: #9a9eaa;
   font-size: 10px;
   font-weight: 600;
@@ -143,7 +60,7 @@
 
 .kirim-row {
   width: 100%;
-  padding: 15px 12px;
+  padding: 15px 10px;
   margin-bottom: 9px;
   border: 1px solid #f0f0f3;
   border-radius: 11px;
@@ -151,24 +68,65 @@
   color: #31374a;
   text-align: left;
   font-size: 11px;
-  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .kirim-row:hover {
   background: #fff8e9;
-  border-color: #f7dda1;
 }
 
 .kirim-row.active {
   background: #ffd257;
   border-color: #ffd257;
-  color: #292511;
-  box-shadow: 0 4px 12px rgba(241, 185, 56, 0.18);
+  font-weight: 600;
 }
 
-/* Judul detail pengiriman */
+/* Tampilan tablet dan HP */
+@media (max-width: 1100px) {
+  .kirim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kirim-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .kirim-heading {
+    padding: 25px 18px 0;
+  }
+
+  .kirim-layout {
+    padding: 20px 15px;
+  }
+}
+
+/* Pencarian pesanan */
+.kirim-search {
+  max-width: 300px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  margin-bottom: 25px;
+  background: #f7f8fa;
+  color: #d9a12d;
+  border-radius: 25px;
+}
+
+.kirim-search input,
+.kirim-search input:focus {
+  min-width: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  font-size: 12px;
+}
+
+/* Detail pengiriman */
 .kirim-detail-head {
   display: flex;
   align-items: center;
@@ -177,34 +135,13 @@
 }
 
 .kirim-detail-head h2 {
-  margin: 0;
   font-size: 19px;
   font-weight: 700;
-  color: #252a3d;
+  margin: 0;
 }
 
-.kirim-detail-head button {
-  width: 35px;
-  height: 35px;
-  display: grid;
-  place-items: center;
-  border: none;
-  border-radius: 9px;
-  background: #f7f8fa;
-  color: #687083;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.kirim-detail-head button:hover {
-  background: #fff0cf;
-  color: #bf8b25;
-}
-
-/* Tata letak detail */
 .kirim-detail-grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 22px;
 }
 
@@ -213,7 +150,7 @@
   min-width: 0;
 }
 
-/* Informasi pelanggan dan pengiriman */
+/* Informasi pelanggan */
 .kirim-info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -242,7 +179,6 @@
 }
 
 .kirim-info > span:last-child {
-  color: #30364b;
   font-size: 13px;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -254,9 +190,7 @@
   height: 38px;
   display: grid;
   place-items: center;
-  color: #51596c;
-  background: #fff;
-  border: 1px solid #f3f3f3;
+  background: white;
   border-radius: 11px;
   box-shadow: 0 4px 12px #232b401b;
 }
@@ -273,14 +207,12 @@
 
 .kirim-soft h3 {
   margin: 0 0 12px;
-  color: #34384a;
   font-size: 13px;
   font-weight: 700;
 }
 
 .kirim-soft p,
 .kirim-soft li {
-  margin-bottom: 6px;
   color: #626978;
   font-size: 12px;
   line-height: 1.7;
@@ -292,18 +224,12 @@
   margin-bottom: 15px;
 }
 
-.kirim-status h3 {
-  font-size: 14px;
-}
-
 .kirim-steps {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  color: #606778;
   font-size: 11px;
-  font-weight: 500;
 }
 
 .kirim-steps .kuning {
@@ -324,29 +250,31 @@
   gap: 15px;
 }
 
-.kirim-address iframe,
-.kirim-big-map iframe {
-  width: 100%;
-  border: 0;
-  border-radius: 10px;
-}
-
 .kirim-address iframe {
+  width: 100%;
   height: 140px;
-}
-
-.kirim-address svg {
-  color: #ba8c31;
+  border: none;
+  border-radius: 10px;
 }
 
 .kirim-address p {
   margin: 10px 0 0;
-  color: #565d6c;
   font-size: 11px;
-  line-height: 1.8;
 }
 
-/* Tampilan detail diperbesar */
+/* Tombol perbesar */
+.kirim-detail-head button {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 9px;
+  background: #f7f8fa;
+  cursor: pointer;
+}
+
+/* Detail diperbesar */
 .kirim-layout.besar {
   grid-template-columns: 1fr;
 }
@@ -367,7 +295,8 @@
   margin: 0;
 }
 
-.kirim-layout.besar .kirim-table-head {
+.kirim-layout.besar .kirim-table-head,
+.kirim-layout.besar .kirim-row:not(.active) {
   display: none;
 }
 
@@ -376,14 +305,9 @@
   min-width: 0;
 }
 
-.kirim-layout.besar .kirim-row:not(.active) {
-  display: none;
-}
-
 .kirim-layout.besar .kirim-row.active {
   margin: 0;
   background: #fffaf0;
-  border-color: #f4e8cd;
 }
 
 .kirim-layout.besar .kirim-detail-grid {
@@ -395,18 +319,21 @@
   margin: 0;
 }
 
-.kirim-layout.besar .kirim-big-map {
+.kirim-big-map {
   margin-bottom: 20px;
 }
 
 .kirim-big-map iframe {
+  width: 100%;
   height: 220px;
+  border: none;
+  border-radius: 10px;
 }
 
 /* Informasi tambahan */
 .kirim-extra {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
@@ -417,14 +344,11 @@
 .kirim-center p {
   font-size: 18px;
   font-weight: 700;
-  color: #30364a;
 }
 
-/* Bukti pengiriman */
 .kirim-bukti {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .bukti-img {
@@ -433,10 +357,6 @@
   height: 140px;
   object-fit: cover;
   border-radius: 10px;
-}
-
-.kirim-soft ul {
-  padding-left: 20px;
 }
 
 /* Tampilan tablet */
@@ -456,18 +376,8 @@
 
 /* Tampilan HP */
 @media (max-width: 700px) {
-  .kirim-topbar {
-    height: 65px;
-    padding: 0 18px;
-    gap: 20px;
-  }
-
   .kirim-heading {
     padding: 25px 18px 0;
-  }
-
-  .kirim-heading h1 {
-    font-size: 25px;
   }
 
   .kirim-layout {
@@ -516,227 +426,13 @@
     grid-template-columns: 1fr;
   }
 
-  .kirim-search {
-    max-width: none;
-  }
-
   .kirim-table-head,
   .kirim-row {
     font-size: 9px;
-  }
-}
-
-/* Navbar */
-.kirim-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-
-  height: 110px;
-  padding: 20px 35px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-
-  background: white;
-  border-radius: 0 0 25px 25px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
-}
-
-/* Pencarian navbar */
-.kirim-nav-search {
-  width: 40%;
-  max-width: 410px;
-  height: 65px;
-
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  padding: 0 25px;
-  background: #f7f8fa;
-  border-radius: 40px;
-  color: #e5b02d;
-}
-
-.kirim-nav-search input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: #555;
-  font-size: 14px;
-}
-
-.kirim-nav-search input::placeholder {
-  color: #aab0bd;
-}
-
-/* Bagian kanan navbar */
-.kirim-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-/* Ikon notifikasi */
-.kirim-nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.kirim-nav-icon {
-  position: relative;
-  width: 36px;
-  height: 36px;
-
-  display: grid;
-  place-items: center;
-
-  border: none;
-  background: transparent;
-  color: #a1a3a8;
-  cursor: pointer;
-}
-
-.kirim-nav-icon:hover {
-  color: #d9a326;
-}
-
-.kirim-nav-icon span {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-
-  min-width: 23px;
-  height: 23px;
-  padding: 0 4px;
-
-  display: grid;
-  place-items: center;
-
-  background: #f8c442;
-  border-radius: 50%;
-
-  color: white;
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.kirim-nav-icon .badge-merah {
-  background: #ee1725;
-}
-
-/* Profil admin */
-.kirim-nav-profile {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-
-  padding-left: 30px;
-  border-left: 1px solid #efefef;
-}
-
-.kirim-nav-avatar {
-  width: 56px;
-  height: 56px;
-
-  display: grid;
-  place-items: center;
-
-  background: #dceafa;
-  border-radius: 13px;
-
-  color: #5378a4;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.kirim-nav-user strong {
-  display: block;
-  color: #9ca0a8;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.kirim-nav-user small {
-  display: block;
-  color: #aab0bd;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.kirim-nav-profile > svg {
-  color: #aab0bd;
-  margin-left: 10px;
-}
-
-/* Tampilan tablet */
-@media (max-width: 1100px) {
-  .kirim-navbar {
-    height: 85px;
-    padding: 15px 20px;
+    gap: 3px;
   }
 
-  .kirim-nav-search {
-    width: 35%;
-    height: 50px;
-  }
-
-  .kirim-nav-right {
-    gap: 15px;
-  }
-
-  .kirim-nav-icons {
-    gap: 10px;
-  }
-
-  .kirim-nav-profile {
-    padding-left: 15px;
-  }
-}
-
-/* Tampilan HP */
-@media (max-width: 700px) {
-  .kirim-navbar {
-    height: auto;
-    min-height: 70px;
-    padding: 14px;
-    gap: 12px;
-  }
-
-  .kirim-nav-search {
-    flex: 1;
-    min-width: 0;
-    height: 45px;
-    padding: 0 12px;
-    gap: 8px;
-  }
-
-  .kirim-nav-search input {
-    font-size: 11px;
-  }
-
-  .kirim-nav-icons {
-    display: none;
-  }
-
-  .kirim-nav-profile {
-    padding-left: 10px;
-    gap: 7px;
-  }
-
-  .kirim-nav-avatar {
-    width: 37px;
-    height: 37px;
-    font-size: 12px;
-  }
-
-  .kirim-nav-user,
-  .kirim-nav-profile > svg {
-    display: none;
+  .kirim-row {
+    padding: 12px 6px;
   }
 }

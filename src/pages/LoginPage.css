@@ -6,7 +6,6 @@
   --border-input: #dcdcdc;
 }
 
-/* Memaksa override bawaan React/Vite jika file index.css lupa dihapus */
 body,
 html,
 #root {
@@ -186,7 +185,6 @@ html,
   cursor: not-allowed;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 900px) {
   .login-page {
     grid-template-columns: 1fr;
