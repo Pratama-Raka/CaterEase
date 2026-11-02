@@ -7,6 +7,7 @@ import PaketCatering from "./pages/PaketCatering";
 import MenuKatering from "./pages/MenuKatering";
 import Pesanan from "./pages/Pesanan";
 import Pengiriman from "./pages/Pengiriman";
+import Laporan from "./pages/Laporan";
 import SettingsPage from "./pages/SettingsPage";
 import Anggota from "./pages/anggota";
 import LoginPage from "./pages/LoginPage";
@@ -59,7 +60,7 @@ function App() {
             path="/pengiriman"
             element={<Pengiriman cari={cari} setCari={setCari} />}
           />
-            <Route path="/laporan" element={null} />
+            <Route path="/laporan" element={<Laporan />} />
             <Route path="/pengaturan" element={<SettingsPage />} />
           </Route>
 
