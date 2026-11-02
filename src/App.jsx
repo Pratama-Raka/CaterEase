@@ -6,7 +6,6 @@ import Anggota from "./pages/anggota";
 import Dashboard from "./pages/Dashboard";
 import Pesanan from "./pages/Pesanan";
 import Pengiriman from "./pages/Pengiriman";
-import Anggota from "./pages/anggota";
 import LoginPage from "./pages/LoginPage";
 import "./theme.css";
 import "./App.css";
