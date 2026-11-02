@@ -1,114 +1,130 @@
 import { useEffect, useState } from 'react';
 import './PaketCatering.css';
+import paketJsonUrl from '../data/paket-katering.json?url';
 
 function PaketCatering() {
-  const [packages, setPackages] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+    const [packages, setPackages] = useState([]);
+    const [selectedPackage, setSelectedPackage] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-  useEffect(() => {
-    const fetchPackages = async () => {
-      try {
-        const response = await fetch('/data/paket-katering.json');
+    useEffect(() => {
+        const fetchPackages = async () => {
+            try {
+                setLoading(true);
+                setError('');
 
-        console.log('Status:', response.status);
-        console.log('Content-Type:', response.headers.get('content-type'));
+                const response = await fetch(paketJsonUrl);
 
-        const result = await response.text();
+                if (!response.ok) {
+                    throw new Error('Gagal mengambil data paket katering.');
+                }
 
-        console.log('Isi respons:', result);
+                const data = await response.json();
 
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data paket katering.');
+                if (!Array.isArray(data)) {
+                    throw new Error('Format data paket tidak sesuai.');
+                }
+
+                setPackages(data);
+            } catch (err) {
+                console.error('Fetch error:', err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPackages();
+    }, []);
+
+    const handleSave = () => {
+        if (!selectedPackage) {
+            alert('Silakan pilih paket Katering terlebih dahulu!');
+            return;
         }
 
-        const data = JSON.parse(result);
+        const chosenPackage = packages.find(
+            (item) => item.id === selectedPackage
+        );
 
-        if (!Array.isArray(data)) {
-          throw new Error('Format data paket tidak sesuai.');
-        }
-
-        setPackages(data);
-      } catch (err) {
-        console.error('Fetch error:', err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+        alert(`Kamu memilih ${chosenPackage.name}!`);
     };
 
-    fetchPackages();
-  }, []);
-
-  const handleSave = () => {
-    if (!selectedPackage) {
-      alert('Silakan pilih paket Katering terlebih dahulu!');
-      return;
+    if (loading) {
+        return (
+            <div className="package-page">
+                <p>Memuat paket katering...</p>
+            </div>
+        );
     }
 
-    const chosenPackage = packages.find(
-      (item) => item.id === selectedPackage
-    );
-
-    alert(`Kamu memilih ${chosenPackage.name}!`);
-  };
-
-
-  return (
-    <div className="package-page">
-      <header className="package-header">
-        <h1>Paket Katering</h1>
-        <p>
-          Pilih paket katering yang sesuai dengan kebutuhanmu.
-          Praktis, lezat, dan hemat!
-        </p>
-      </header>
-
-      <section className="package-list">
-        {packages.map((item) => (
-          <article
-            className={`package-card ${selectedPackage === item.id ? 'selected' : ''
-              }`}
-            key={item.id}
-          >
-            <h2>{item.name}</h2>
-
-            <p className="package-description">
-              {item.description}
-            </p>
-
-            <div className="package-price">
-              {item.price}
+    if (error) {
+        return (
+            <div className="package-page">
+                <p>{error}</p>
+                <button onClick={() => window.location.reload()}>
+                    Coba Lagi
+                </button>
             </div>
+        );
+    }
 
-            <div className="package-portions">
-              {item.portions}
-            </div>
+    return (
+        <div className="package-page">
+            <header className="package-header">
+                <h1>Paket Katering</h1>
+                <p>
+                    Pilih paket katering yang sesuai dengan kebutuhanmu.
+                    Praktis, lezat, dan hemat!
+                </p>
+            </header>
 
-            <ul className="package-features">
-              {item.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
+            <section className="package-list">
+                {packages.map((item) => (
+                    <article
+                        className={`package-card ${
+                            selectedPackage === item.id ? 'selected' : ''
+                        }`}
+                        key={item.id}
+                    >
+                        <h2>{item.name}</h2>
 
-            <button
-              className="package-button"
-              onClick={() => setSelectedPackage(item.id)}
-            >
-              {selectedPackage === item.id
-                ? 'Paket Dipilih ✓'
-                : 'Paket Dipilih'}
+                        <p className="package-description">
+                            {item.description}
+                        </p>
+
+                        <div className="package-price">
+                            {item.price}
+                        </div>
+
+                        <div className="package-portions">
+                            {item.portions}
+                        </div>
+
+                        <ul className="package-features">
+                            {item.features.map((feature, index) => (
+                                <li key={index}>{feature}</li>
+                            ))}
+                        </ul>
+
+                        <button
+                            className="package-button"
+                            onClick={() => setSelectedPackage(item.id)}
+                        >
+                            {selectedPackage === item.id
+                                ? 'Paket Dipilih ✓'
+                                : 'Pilih Paket'}
+                        </button>
+                    </article>
+                ))}
+            </section>
+
+            <button className="package-save" onClick={handleSave}>
+                Simpan
             </button>
-          </article>
-        ))}
-      </section>
-
-      <button className="package-save" onClick={handleSave}>
-        Simpan
-      </button>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default PaketCatering;

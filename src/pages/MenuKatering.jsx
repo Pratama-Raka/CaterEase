@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Plus, Check, Image as ImageIcon } from 'lucide-react';
 import './MenuKatering.css';
+import menuJsonUrl from '../data/menu-katering.json?url';
 
 function MenuKatering() {
     const [menu, setMenu] = useState([]);
@@ -8,21 +9,40 @@ function MenuKatering() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
+    const menuImages = Object.fromEntries(
+        Object.entries(
+            import.meta.glob('../assets/*', {
+                eager: true,
+                query: '?url',
+                import: 'default'
+            })
+        ).map(([path, url]) => [
+            path.split('/').pop().toLowerCase(),
+            url
+        ])
+    );
+
     useEffect(() => {
         const fetchMenu = async () => {
             try {
                 setLoading(true);
                 setError('');
 
-                const response = await fetch('/data/menu-katering.json');
+                const response = await fetch(menuJsonUrl);
 
                 if (!response.ok) {
                     throw new Error('Gagal mengambil data menu.');
                 }
 
                 const data = await response.json();
+
+                if (!Array.isArray(data)) {
+                    throw new Error('Format data menu tidak sesuai.');
+                }
+
                 setMenu(data);
             } catch (err) {
+                console.error('Fetch error:', err);
                 setError(err.message);
             } finally {
                 setLoading(false);
@@ -66,7 +86,6 @@ function MenuKatering() {
     return (
         <div className="menu-page">
             <div className="menu-content">
-
                 <div className="menu-title">
                     <div>
                         <h1>Menu Katering Mingguan</h1>
@@ -96,15 +115,22 @@ function MenuKatering() {
                                         const isSelected =
                                             selectedMenu[meal.id] === item.id;
 
+                                        const imageName = item.image
+                                            ?.split('/')
+                                            .pop()
+                                            .toLowerCase();
+
+                                        const imageUrl = menuImages[imageName];
+
                                         return (
                                             <div
                                                 className={`menu-card ${isSelected ? 'menu-card-selected' : ''}`}
                                                 key={item.id}
                                             >
                                                 <div className="menu-image">
-                                                    {item.image ? (
+                                                    {imageUrl ? (
                                                         <img
-                                                            src={item.image}
+                                                            src={imageUrl}
                                                             alt={item.name}
                                                         />
                                                     ) : (
@@ -121,7 +147,10 @@ function MenuKatering() {
                                                     <button
                                                         className={`menu-select-button ${isSelected ? 'selected' : ''}`}
                                                         onClick={() =>
-                                                            handleSelectMenu(meal.id, item.id)
+                                                            handleSelectMenu(
+                                                                meal.id,
+                                                                item.id
+                                                            )
                                                         }
                                                         aria-label={
                                                             isSelected
@@ -144,7 +173,6 @@ function MenuKatering() {
                         ))}
                     </section>
                 ))}
-
             </div>
         </div>
     );
