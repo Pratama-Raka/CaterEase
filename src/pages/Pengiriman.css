@@ -358,3 +358,81 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+/* Tampilan tablet */
+@media (max-width: 1100px) {
+  .kirim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kirim-card {
+    min-height: auto;
+  }
+
+  .kirim-map-column {
+    width: 100%;
+  }
+}
+
+/* Tampilan HP */
+@media (max-width: 700px) {
+  .kirim-heading {
+    padding: 25px 18px 0;
+  }
+
+  .kirim-layout {
+    padding: 20px 15px;
+    gap: 18px;
+  }
+
+  .kirim-card {
+    padding: 18px;
+  }
+
+  .kirim-info-grid,
+  .kirim-layout.besar .kirim-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kirim-layout.besar .kirim-list {
+    display: block;
+  }
+
+  .kirim-layout.besar .kirim-search {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 15px;
+  }
+
+  .kirim-extra {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kirim-address-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kirim-table-head,
+  .kirim-row {
+    font-size: 10px;
+    gap: 4px;
+  }
+}
+
+/* Tampilan HP kecil */
+@media (max-width: 420px) {
+  .kirim-extra,
+  .kirim-address-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kirim-table-head,
+  .kirim-row {
+    font-size: 9px;
+    gap: 3px;
+  }
+
+  .kirim-row {
+    padding: 12px 6px;
+  }
+}
