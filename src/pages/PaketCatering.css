@@ -402,36 +402,74 @@
 }
 
 /* Tampilan tablet */
-@media (max-width: 1000px) {
-    .package-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* Tampilan HP */
-@media (max-width: 650px) {
+@media (max-width: 768px) {
     .package-page {
-        padding: 20px 16px;
+        padding: 20px;
     }
 
     .package-header {
         align-items: flex-start;
-        flex-direction: column;
     }
 
     .package-header h1 {
-        font-size: 22px;
+        font-size: 23px;
+    }
+
+    .package-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .package-card {
+        padding: 18px;
+    }
+
+    .package-modal {
+        padding: 22px;
+    }
+}
+
+/* Tampilan HP */
+@media (max-width: 480px) {
+    .package-page {
+        padding: 14px;
+    }
+
+    .package-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .package-header h1 {
+        font-size: 21px;
+    }
+
+    .package-add-button {
+        width: 100%;
     }
 
     .package-list {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .package-card {
-        padding: 20px;
+        padding: 18px;
+    }
+
+    .package-card h3 {
+        font-size: 17px;
+    }
+
+    .package-price {
+        font-size: 22px;
     }
 
     .package-modal {
+        padding: 18px;
+    }
+
+    .package-confirm-modal {
         padding: 20px;
     }
 
@@ -441,5 +479,12 @@
 
     .package-modal-actions button {
         width: 100%;
+    }
+
+    .package-toast {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        text-align: center;
     }
 }
