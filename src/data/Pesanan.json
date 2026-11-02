@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "namaPelanggan": "Andi",
+      "paketId": 1,
+      "jumlahPaket": 2,
+      "jumlahPorsi": 24,
+      "totalHarga": 384000,
+      "status": "Menunggu Konfirmasi"
+    },
+    {
+      "id": 2,
+      "namaPelanggan": "Budi",
+      "paketId": 2,
+      "jumlahPaket": 1,
+      "jumlahPorsi": 48,
+      "totalHarga": 720000,
+      "status": "Terkonfirmasi"
+    },
+    {
+      "id": 3,
+      "namaPelanggan": "Citra",
+      "paketId": 3,
+      "jumlahPaket": 1,
+      "jumlahPorsi": 288,
+      "totalHarga": 4464000,
+      "status": "Diproses"
+    }
+  ]
