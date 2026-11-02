@@ -120,12 +120,13 @@
   display: grid;
   place-items: center;
   width: 54px;
-  height: 54px;
-  border-radius: 13px;
-  background: #dceafa;
-  color: #5378a4;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: #fff4c2;
+  color: #765900;
   font-size: 17px;
   font-weight: 700;
+  flex: none;
 }
 
 .navbar-user strong {
@@ -209,8 +210,8 @@
 
   .navbar-avatar {
     width: 36px;
-    height: 36px;
     font-size: 12px;
+    border-radius: 10px;
   }
 
   .navbar-user,

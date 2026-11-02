@@ -7,9 +7,22 @@ import {
   ChevronDown,
   Menu,
 } from "lucide-react";
+import { getSession } from "../api/session";
 import "./Navbar.css";
 
 function Navbar({ cari, setCari, onMenuClick }) {
+  const session = getSession();
+  const user = session?.user;
+  const displayName = user?.name || "CaterEase";
+  const initials =
+    displayName
+      .trim()
+      .split(/\s+/)
+      .map((part) => part[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "CE";
+
   const notifikasi = [
     { Icon: Bell, jumlah: 12 },
     { Icon: CalendarDays, jumlah: 5 },
@@ -57,10 +70,10 @@ function Navbar({ cari, setCari, onMenuClick }) {
 
         {/* Profil admin */}
         <div className="navbar-profile">
-          <div className="navbar-avatar">AP</div>
+          <div className="navbar-avatar">{initials}</div>
           <div className="navbar-user">
-            <strong>Azzhara Putri</strong>
-            <small>Super Admin</small>
+            <strong>{displayName}</strong>
+            <small>{user?.email || "Super Admin"}</small>
           </div>
           <ChevronDown size={17} />
         </div>
