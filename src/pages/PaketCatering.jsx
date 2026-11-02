@@ -1,56 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './PaketCatering.css';
 
-const packages = [
-  {
-    id: 1,
-    name: 'Paket Mingguan',
-    description: 'Paket Katering untuk kebutuhan satu minggu.',
-    price: 'Rp192.000',
-    portions: '12 porsi',
-    features: [
-      'Nasi dan lauk pilihan',
-      'Sayuran segar',
-      'Menu bervariasi',
-      'Gratis ongkir',
-      'Tanpa MSG',
-      'Request Menu Favoritmu!',
-    ],
-  },
-  {
-    id: 2,
-    name: 'Paket Bulanan',
-    description: 'Pilihan praktis untuk kebutuhan satu bulan.',
-    price: 'Rp720.000',
-    portions: '48 porsi',
-    features: [
-      'Nasi dan lauk pilihan',
-      'Sayuran segar',
-      'Menu bervariasi',
-      'Gratis ongkir',
-      'Tanpa MSG',
-      'Request Menu Favoritmu!',
-    ],
-  },
-  {
-    id: 3,
-    name: 'Paket Semester',
-    description: 'Paket hemat untuk kebutuhan jangka panjang.',
-    price: 'Rp4.464.000',
-    portions: '288 porsi',
-    features: [
-      'Nasi dan lauk pilihan',
-      'Sayuran segar',
-      'Menu bervariasi',
-      'Gratis ongkir',
-      'Tanpa MSG',
-      'Request Menu Favoritmu!',
-    ],
-  },
-];
-
 function PaketCatering() {
+  const [packages, setPackages] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        const response = await fetch('/data/paket-katering.json');
+
+        console.log('Status:', response.status);
+        console.log('Content-Type:', response.headers.get('content-type'));
+
+        const result = await response.text();
+
+        console.log('Isi respons:', result);
+
+        if (!response.ok) {
+          throw new Error('Gagal mengambil data paket katering.');
+        }
+
+        const data = JSON.parse(result);
+
+        if (!Array.isArray(data)) {
+          throw new Error('Format data paket tidak sesuai.');
+        }
+
+        setPackages(data);
+      } catch (err) {
+        console.error('Fetch error:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPackages();
+  }, []);
 
   const handleSave = () => {
     if (!selectedPackage) {
@@ -65,6 +54,7 @@ function PaketCatering() {
     alert(`Kamu memilih ${chosenPackage.name}!`);
   };
 
+
   return (
     <div className="package-page">
       <header className="package-header">
@@ -78,9 +68,8 @@ function PaketCatering() {
       <section className="package-list">
         {packages.map((item) => (
           <article
-            className={`package-card ${
-              selectedPackage === item.id ? 'selected' : ''
-            }`}
+            className={`package-card ${selectedPackage === item.id ? 'selected' : ''
+              }`}
             key={item.id}
           >
             <h2>{item.name}</h2>
