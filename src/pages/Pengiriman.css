@@ -261,3 +261,100 @@
   margin: 10px 0 0;
   font-size: 11px;
 }
+
+/* Tombol perbesar */
+.kirim-detail-head button {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 9px;
+  background: #f7f8fa;
+  cursor: pointer;
+}
+
+/* Detail diperbesar */
+.kirim-layout.besar {
+  grid-template-columns: 1fr;
+}
+
+.kirim-layout.besar .kirim-card {
+  min-height: auto;
+}
+
+.kirim-layout.besar .kirim-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+}
+
+.kirim-layout.besar .kirim-search {
+  flex: 0 0 220px;
+  margin: 0;
+}
+
+.kirim-layout.besar .kirim-table-head,
+.kirim-layout.besar .kirim-row:not(.active) {
+  display: none;
+}
+
+.kirim-layout.besar .kirim-orders {
+  flex: 1;
+  min-width: 0;
+}
+
+.kirim-layout.besar .kirim-row.active {
+  margin: 0;
+  background: #fffaf0;
+}
+
+.kirim-layout.besar .kirim-detail-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+}
+
+.kirim-layout.besar .kirim-map-column {
+  width: 100%;
+  margin: 0;
+}
+
+.kirim-big-map {
+  margin-bottom: 20px;
+}
+
+.kirim-big-map iframe {
+  width: 100%;
+  height: 220px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Informasi tambahan */
+.kirim-extra {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.kirim-center {
+  text-align: center;
+}
+
+.kirim-center p {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.kirim-bukti {
+  display: flex;
+  justify-content: center;
+}
+
+.bukti-img {
+  width: 100%;
+  max-width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}

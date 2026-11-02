@@ -6,6 +6,7 @@ import "./Pengiriman.css";
 
 function Pengiriman({ cari, setCari }) {
   const [dipilih, setDipilih] = useState(pesanan[1]);
+  const [besar, setBesar] = useState(false);
 
   return (
     <div className="kirim-page">
@@ -14,7 +15,7 @@ function Pengiriman({ cari, setCari }) {
         <p>Kelola dan pantau pengiriman pesanan katering.</p>
       </div>
 
-      <div className="kirim-layout">
+      <div className={`kirim-layout ${besar ? "besar" : ""}`}>
         <DaftarPesanan
           pesanan={pesanan}
           dipilih={dipilih}
@@ -23,7 +24,7 @@ function Pengiriman({ cari, setCari }) {
           setCari={setCari}
         />
 
-        <DetailPesanan dipilih={dipilih} />
+        <DetailPesanan dipilih={dipilih} besar={besar} setBesar={setBesar} />
       </div>
     </div>
   );
