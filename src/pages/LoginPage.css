@@ -6,8 +6,9 @@
   --border-input: #dcdcdc;
 }
 
-/* Memaksa override bawaan React/Vite jika file index.css lupa dihapus */
-body, html, #root {
+body,
+html,
+#root {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
@@ -26,7 +27,10 @@ body, html, #root {
   margin: 0;
   padding: 0;
   background: #ffffff;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   box-sizing: border-box;
 }
 
@@ -170,7 +174,17 @@ body, html, #root {
   text-decoration: underline;
 }
 
-/* Mobile Responsiveness */
+.form-error {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin: 0 0 12px;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (max-width: 900px) {
   .login-page {
     grid-template-columns: 1fr;
