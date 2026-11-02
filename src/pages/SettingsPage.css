@@ -361,7 +361,7 @@
     grid-template-columns: 56px minmax(0, 1fr);
     align-items: center;
     column-gap: 14px;
-    padding: 0 0 20px;
+    padding: 16px 14px 20px;
     border-right: 0;
     border-bottom: 1px solid #eeeef2;
   }
