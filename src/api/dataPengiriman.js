@@ -40,3 +40,24 @@ export const menu = [
   "Ayam Teriyaki",
   "Air Mineral",
 ];
+
+export const dataAwalPengiriman = {
+  102: {
+    status: "Pesanan Tiba",
+    waktuKedatangan: "20:30",
+    catatan: "Diterima oleh Supri",
+    bukti: null,
+  },
+  "022": {
+    status: "Pesanan Tiba",
+    waktuKedatangan: "21:40",
+    catatan: "Diterima dengan saudara Firna",
+    bukti: null,
+  },
+  110: {
+    status: "Dalam Pengiriman",
+    waktuKedatangan: "Belum ditentukan",
+    catatan: "Menunggu konfirmasi penerimaan",
+    bukti: null,
+  },
+};
