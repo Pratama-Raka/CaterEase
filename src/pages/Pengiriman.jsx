@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { pesanan } from "./dataPengiriman";
+import { pesanan } from "../api/dataPengiriman";
 import DaftarPesanan from "../components/daftarPesanan";
 import DetailPesanan from "../components/DetailPesanan";
 import "./Pengiriman.css";
