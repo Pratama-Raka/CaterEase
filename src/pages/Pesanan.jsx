@@ -1,39 +1,41 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Search, UserRound, CalendarDays, MapPin } from "lucide-react";
 import "./Pesanan.css";
 
-const orders = [
-  {
-    id: "102",
-    nama: "Budi Santoso",
-    tanggal: "12/04/2026",
-    status: "Terkonfirmasi",
-    acara: "Pernikahan",
-    alamat: "Jl. Melati no 12",
-    paket: "Paket Silver",
-    porsi: 150,
-    harga: 40000,
-  },
-  {
-    id: "022",
-    nama: "Dewi Resque",
-    tanggal: "07/09/2026",
-    status: "Tertunda",
-    acara: "Ulang Tahun Anak",
-    alamat: "Jl. Sidoarjo no 89",
-    paket: "Paket Gold",
-    porsi: 500,
-    harga: 55000,
-  },
-];
-
 function Pesanan() {
-  const [selected, setSelected] = useState(orders[0]);
+  const [orders, setOrders] = useState([]);
+  const [packages, setPackages] = useState([]);
+  const [selected, setSelected] = useState(null);
   const [search, setSearch] = useState("");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("/src/data/pesanan.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setOrders(data);
+        setSelected(data[0] || null);
+      })
+      .catch((error) => console.error("Gagal mengambil pesanan:", error));
+
+    fetch("/src/data/paket-katering.json")
+      .then((response) => response.json())
+      .then((data) => setPackages(data))
+      .catch((error) => console.error("Gagal mengambil paket:", error));
+  }, []);
 
   const filteredOrders = orders.filter((order) =>
-    order.nama.toLowerCase().includes(search.toLowerCase())
+    order.namaPelanggan.toLowerCase().includes(search.toLowerCase())
   );
+
+  const selectedPackage = packages.find(
+    (item) => item.id === selected?.paketId
+  );
+
+  function handleConfirm() {
+    setMessage("Pesanan berhasil dikonfirmasi!");
+  }
 
   return (
     <div className="pesanan">
@@ -53,60 +55,87 @@ function Pesanan() {
           <button
             className="order-item"
             key={order.id}
-            onClick={() => setSelected(order)}
+            onClick={() => {
+              setSelected(order);
+              setMessage("");
+            }}
           >
             <b>#{order.id}</b>
-            <span>{order.nama}</span>
+            <span>{order.namaPelanggan}</span>
             <small>{order.status}</small>
           </button>
         ))}
+
+        {filteredOrders.length === 0 && (
+          <p>Pesanan tidak ditemukan.</p>
+        )}
       </section>
 
       <section className="order-detail">
         <h2>Order Details</h2>
 
-        <div className="detail-item">
-          <UserRound />
-          <div>
-            <small>Nama Pelanggan</small>
-            <b>{selected.nama}</b>
-          </div>
-        </div>
+        {selected && (
+          <>
+            <div className="detail-item">
+              <UserRound />
+              <div>
+                <small>Nama Pelanggan</small>
+                <b>{selected.namaPelanggan}</b>
+              </div>
+            </div>
 
-        <div className="detail-item">
-          <CalendarDays />
-          <div>
-            <small>Detail Acara</small>
-            <b>{selected.acara}</b>
-            <span>{selected.tanggal}</span>
-          </div>
-        </div>
+            <div className="detail-item">
+              <CalendarDays />
+              <div>
+                <small>Detail Acara</small>
+                <b>Belum tersedia</b>
+              </div>
+            </div>
 
-        <div className="detail-item">
-          <MapPin />
-          <div>
-            <small>Alamat</small>
-            <b>{selected.alamat}</b>
-          </div>
-        </div>
+            <div className="detail-item">
+              <MapPin />
+              <div>
+                <small>Alamat</small>
+                <b>Belum tersedia</b>
+              </div>
+            </div>
 
-        <div className="package-box">
-          <h3>{selected.paket}</h3>
-          <p>{selected.porsi} Porsi</p>
-          <p>Rp{selected.harga.toLocaleString("id-ID")} / porsi</p>
-          <hr />
-          <b>
-            Total: Rp
-            {(selected.harga * selected.porsi).toLocaleString("id-ID")}
-          </b>
-        </div>
+            <div className="package-box">
+              <h3>
+                {selectedPackage?.name || "Paket Katering"}
+              </h3>
 
-        <button
-          className="confirm-button"
-          onClick={() => alert("Pesanan dikonfirmasi")}
-        >
-          Konfirmasi Pesanan
-        </button>
+              <p>{selected.jumlahPorsi} Porsi</p>
+
+              <p>
+                Rp
+                {(selected.totalHarga / selected.jumlahPorsi).toLocaleString("id-ID")}
+                {" / porsi"}
+              </p>
+
+              <hr />
+
+              <b>
+                Total: Rp
+                {selected.totalHarga.toLocaleString("id-ID")}
+              </b>
+            </div>
+
+            <button
+              className="confirm-button"
+              onClick={handleConfirm}
+              disabled={selected.status === "Terkonfirmasi"}
+            >
+              Konfirmasi Pesanan
+            </button>
+
+            {message && (
+              <div className="confirm-message">
+                {message}
+              </div>
+            )}
+          </>
+        )}
       </section>
     </div>
   );

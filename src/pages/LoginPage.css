@@ -185,7 +185,7 @@ html,
   cursor: not-allowed;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .login-page {
     grid-template-columns: 1fr;
     height: auto;
@@ -200,5 +200,19 @@ html,
 
   .login-form-panel {
     padding: 28px 20px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form-content h1 {
+    font-size: 1.45rem;
+  }
+
+  .login-form-content p {
+    font-size: 0.82rem;
+  }
+
+  .login-form-panel {
+    padding: 24px 16px 28px;
   }
 }
