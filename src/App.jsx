@@ -1,122 +1,88 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
+import PaketCatering from "./pages/PaketCatering";
+import MenuKatering from "./pages/MenuKatering";
+import Pesanan from "./pages/Pesanan";
+import Pengiriman from "./pages/Pengiriman";
+import Laporan from "./pages/Laporan";
+import SettingsPage from "./pages/SettingsPage";
+import Anggota from "./pages/anggota";
+import LoginPage from "./pages/LoginPage";
+import { getSession } from "./api/session";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+function ProtectedRoute() {
+  return getSession() ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
-export default App
+function App() {
+  const [cari, setCari] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+  const showSidebar = !isLoginPage && getSession();
+
+  // Close the drawer whenever the page changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  return (
+    <div className={`app ${isLoginPage ? "app-auth" : ""}`}>
+      {showSidebar && (
+        <Sidebar mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      )}
+
+      {showSidebar && mobileOpen && (
+        <div className="drawer-overlay" onClick={() => setMobileOpen(false)} />
+      )}
+
+      <main
+        className={`app-main ${isLoginPage ? "auth-main" : ""}`}
+        aria-label="Konten dashboard"
+      >
+        {!isLoginPage && (
+          <Navbar
+            cari={cari}
+            setCari={setCari}
+            onMenuClick={() => setMobileOpen(true)}
+          />
+        )}
+
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route
+            path="/login"
+            element={
+              getSession() ? (
+                <Navigate to="/dashboard" replace />
+              ) : (
+                <LoginPage />
+              )
+            }
+          />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/katering" element={<PaketCatering />} />
+            <Route path="/menu-katering" element={<MenuKatering />} />
+            <Route path="/anggota" element={<Anggota />} />
+            <Route path="/pesanan" element={<Pesanan />} />
+            <Route
+            path="/pengiriman"
+            element={<Pengiriman cari={cari} setCari={setCari} />}
+          />
+            <Route path="/laporan" element={<Laporan />} />
+            <Route path="/pengaturan" element={<SettingsPage />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
+
+export default App;
