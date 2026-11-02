@@ -1,32 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
-import { Search, ArrowUpRight, Eye, Pencil, Trash2, Download, ChevronLeft, ChevronRight, X, Check } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Search, ArrowUpRight, Download, ChevronLeft, ChevronRight, X, Check } from "lucide-react";
+import dashboardData from "../data/data-dashboard.json";
 import "./Dashboard.css";
 
 const money = (value) => `Rp${Number(value || 0).toLocaleString("id-ID")}`;
 
 function Dashboard() {
-  const [dashboardData, setDashboardData] = useState(null);
-  const [members, setMembers] = useState([]);
+  const members = dashboardData.members || [];
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
   const [page, setPage] = useState(1);
-  const [dialog, setDialog] = useState(null);
   const [notice, setNotice] = useState("");
-  const [loadingError, setLoadingError] = useState("");
   const pageSize = 5;
-
-  useEffect(() => {
-    fetch("/data/data-dashboard.json")
-      .then((response) => {
-        if (!response.ok) throw new Error("Data dashboard gagal dimuat.");
-        return response.json();
-      })
-      .then((data) => {
-        setDashboardData(data);
-        setMembers(data.members || []);
-      })
-      .catch((error) => setLoadingError(error.message));
-  }, []);
 
   const filteredMembers = useMemo(() => members.filter((member) => {
     const keyword = search.toLowerCase();
@@ -52,26 +37,6 @@ function Dashboard() {
     URL.revokeObjectURL(url);
     setNotice("Data member berhasil diekspor.");
   }
-
-  function saveMember(event) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    setMembers((current) => current.map((member) => member.id === dialog.member.id
-      ? { ...member, name: form.get("name"), place: form.get("place"), package: form.get("package") }
-      : member));
-    setDialog(null);
-    setNotice("Data member berhasil diperbarui.");
-  }
-
-  function deleteMember() {
-    setMembers((current) => current.filter((member) => member.id !== dialog.member.id));
-    setDialog(null);
-    setPage(1);
-    setNotice("Member berhasil dihapus dari data demo.");
-  }
-
-  if (loadingError) return <main className="ce-dashboard"><p>{loadingError} Periksa file public/data/data-dashboard.json.</p></main>;
-  if (!dashboardData) return <main className="ce-dashboard">Memuat data dashboard...</main>;
 
   const { summary } = dashboardData;
   const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -138,7 +103,7 @@ function Dashboard() {
 
         <div className="ce-table-scroll">
           <table className="ce-members-table">
-            <thead><tr><th>Member</th><th>Paket</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>Member</th><th>Paket</th><th>Tanggal</th><th>Status</th></tr></thead>
             <tbody>
               {visibleMembers.map((member) => (
                 <tr key={member.id}>
@@ -148,14 +113,9 @@ function Dashboard() {
                   </div></td>
                   <td>{member.package}</td><td>{member.date}</td>
                   <td><span className={`ce-status ${member.status === "Completed" ? "is-completed" : ""}`}>{member.status}</span></td>
-                  <td><div className="ce-actions">
-                    <button title="Detail" aria-label={`Detail ${member.name}`} onClick={() => setDialog({ type: "view", member })}><Eye size={16} /></button>
-                    <button title="Edit" aria-label={`Edit ${member.name}`} onClick={() => setDialog({ type: "edit", member })}><Pencil size={16} /></button>
-                    <button title="Hapus" aria-label={`Hapus ${member.name}`} onClick={() => setDialog({ type: "delete", member })}><Trash2 size={16} /></button>
-                  </div></td>
                 </tr>
               ))}
-              {!visibleMembers.length && <tr><td className="ce-empty" colSpan="5">Member tidak ditemukan.</td></tr>}
+              {!visibleMembers.length && <tr><td className="ce-empty" colSpan="4">Member tidak ditemukan.</td></tr>}
             </tbody>
           </table>
         </div>
@@ -171,26 +131,6 @@ function Dashboard() {
       </section>
 
       {notice && <div className="ce-toast" role="status"><Check size={17} />{notice}<button aria-label="Tutup" onClick={() => setNotice("")}><X size={16} /></button></div>}
-
-      {dialog && <div className="ce-modal-overlay" onMouseDown={() => setDialog(null)}>
-        <section className="ce-modal" role="dialog" aria-modal="true" onMouseDown={(event) => event.stopPropagation()}>
-          <div className="ce-modal-heading">
-            <h2>{dialog.type === "view" ? "Detail Member" : dialog.type === "edit" ? "Edit Member" : "Hapus Member"}</h2>
-            <button aria-label="Tutup" onClick={() => setDialog(null)}><X size={19} /></button>
-          </div>
-          {dialog.type === "edit" ? <form onSubmit={saveMember}>
-            <label>Nama<input name="name" defaultValue={dialog.member.name} required /></label>
-            <label>Lokasi<input name="place" defaultValue={dialog.member.place} required /></label>
-            <label>Paket<select name="package" defaultValue={dialog.member.package}><option>Weekly</option><option>Monthly</option><option>Semester</option></select></label>
-            <button className="ce-primary" type="submit">Simpan Perubahan</button>
-          </form> : <>
-            <p><strong>{dialog.member.name}</strong></p>
-            <p>Lokasi: {dialog.member.place}</p><p>Paket: {dialog.member.package}</p>
-            <p>Tanggal: {dialog.member.date}</p><p>Status: {dialog.member.status}</p>
-            {dialog.type === "delete" ? <button className="ce-danger" onClick={deleteMember}>Ya, Hapus Member</button> : <button className="ce-primary" onClick={() => setDialog(null)}>Tutup</button>}
-          </>}
-        </section>
-      </div>}
     </main>
   );
 }
