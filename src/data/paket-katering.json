@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Paket Mingguan",
+    "description": "Paket Katering untuk kebutuhan satu minggu.",
+    "price": "Rp192.000",
+    "portions": "12 porsi",
+    "features": [
+      "Nasi dan lauk pilihan",
+      "Sayuran segar",
+      "Menu bervariasi",
+      "Gratis ongkir",
+      "Tanpa MSG",
+      "Request Menu Favoritmu!"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Paket Bulanan",
+    "description": "Pilihan praktis untuk kebutuhan satu bulan.",
+    "price": "Rp720.000",
+    "portions": "48 porsi",
+    "features": [
+      "Nasi dan lauk pilihan",
+      "Sayuran segar",
+      "Menu bervariasi",
+      "Gratis ongkir",
+      "Tanpa MSG",
+      "Request Menu Favoritmu!"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Paket Semester",
+    "description": "Paket hemat untuk kebutuhan jangka panjang.",
+    "price": "Rp4.464.000",
+    "portions": "288 porsi",
+    "features": [
+      "Nasi dan lauk pilihan",
+      "Sayuran segar",
+      "Menu bervariasi",
+      "Gratis ongkir",
+      "Tanpa MSG",
+      "Request Menu Favoritmu!"
+    ]
+  }
+]

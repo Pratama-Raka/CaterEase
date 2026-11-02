@@ -1,9 +1,9 @@
 import { UserRound, Phone, Mail } from "lucide-react";
 import { MapPin } from "lucide-react";
-import { alamat } from "../pages/dataPengiriman";
+import { alamat } from "../api/dataPengiriman";
 import PetaPengiriman from "./PetaPengiriman";
 import { Maximize2, Minimize2 } from "lucide-react";
-import { menu } from "../pages/dataPengiriman";
+import { menu } from "../api/dataPengiriman";
 import buktiPengiriman from "../assets/catering-buffet.jpg";
 
 function DetailPesanan({ dipilih, besar, setBesar }) {
