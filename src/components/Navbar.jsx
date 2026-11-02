@@ -5,12 +5,23 @@ import {
   Mail,
   LayoutGrid,
   ChevronDown,
+  Menu,
 } from "lucide-react";
-import { useState } from "react";
+import { getSession } from "../api/session";
 import "./Navbar.css";
 
-function Navbar() {
-  const [cari, setCari] = useState("");
+function Navbar({ cari, setCari, onMenuClick }) {
+  const session = getSession();
+  const user = session?.user;
+  const displayName = user?.name || "CaterEase";
+  const initials =
+    displayName
+      .trim()
+      .split(/\s+/)
+      .map((part) => part[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "CE";
 
   const notifikasi = [
     { Icon: Bell, jumlah: 12 },
@@ -21,6 +32,16 @@ function Navbar() {
 
   return (
     <header className="navbar-admin">
+      {/* Hamburger (mobile only) */}
+      <button
+        type="button"
+        className="navbar-menu-btn"
+        onClick={onMenuClick}
+        aria-label="Buka menu"
+      >
+        <Menu size={22} aria-hidden="true" />
+      </button>
+
       {/* Pencarian */}
       <div className="navbar-search">
         <Search size={21} />
@@ -36,7 +57,7 @@ function Navbar() {
         <div className="navbar-icons">
           {notifikasi.map(({ Icon, jumlah, merah }, i) => (
             <button
-              className="navbar-icon"
+              className="navbar-admin-icon"
               key={i}
               type="button"
               aria-label={`Notifikasi ${i + 1}`}
@@ -49,10 +70,10 @@ function Navbar() {
 
         {/* Profil admin */}
         <div className="navbar-profile">
-          <div className="navbar-avatar">AP</div>
+          <div className="navbar-avatar">{initials}</div>
           <div className="navbar-user">
-            <strong>Azzhara Putri</strong>
-            <small>Super Admin</small>
+            <strong>{displayName}</strong>
+            <small>{user?.email || "Super Admin"}</small>
           </div>
           <ChevronDown size={17} />
         </div>

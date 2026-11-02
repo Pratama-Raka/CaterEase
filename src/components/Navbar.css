@@ -1,4 +1,3 @@
-/* Navbar utama */
 .navbar-admin {
   position: sticky;
   top: 0;
@@ -15,7 +14,25 @@
   box-shadow: 0 3px 15px #00000008;
 }
 
-/* Pencarian */
+/* Hamburger button (hidden on desktop) */
+.navbar-menu-btn {
+  display: none;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #3e3e46;
+  cursor: pointer;
+}
+
+.navbar-menu-btn:hover {
+  background: #f5f5f8;
+}
+
 .navbar-search {
   display: flex;
   align-items: center;
@@ -43,7 +60,6 @@
   color: #aab0bd;
 }
 
-/* Bagian kanan */
 .navbar-right,
 .navbar-icons,
 .navbar-profile {
@@ -58,8 +74,7 @@
   gap: 18px;
 }
 
-/* Ikon notifikasi */
-.navbar-icon {
+.navbar-admin-icon {
   position: relative;
   display: grid;
   place-items: center;
@@ -71,11 +86,11 @@
   cursor: pointer;
 }
 
-.navbar-icon:hover {
+.navbar-admin-icon:hover {
   color: #d9a326;
 }
 
-.navbar-icon span {
+.navbar-admin-icon span {
   position: absolute;
   top: -5px;
   right: -5px;
@@ -91,11 +106,10 @@
   font-weight: 600;
 }
 
-.navbar-icon .merah {
+.navbar-admin-icon .merah {
   background: #ee1725;
 }
 
-/* Profil admin */
 .navbar-profile {
   gap: 13px;
   padding-left: 25px;
@@ -106,12 +120,13 @@
   display: grid;
   place-items: center;
   width: 54px;
-  height: 54px;
-  border-radius: 13px;
-  background: #dceafa;
-  color: #5378a4;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: #fff4c2;
+  color: #765900;
   font-size: 17px;
   font-weight: 700;
+  flex: none;
 }
 
 .navbar-user strong {
@@ -132,7 +147,6 @@
   color: #aab0bd;
 }
 
-/* Tampilan tablet */
 @media (max-width: 1100px) {
   .navbar-admin {
     min-height: 80px;
@@ -154,7 +168,19 @@
   }
 }
 
-/* Tampilan HP */
+@media (max-width: 768px) {
+  .navbar-menu-btn {
+    display: grid;
+  }
+
+  .navbar-admin {
+    top: 0;
+    border-radius: 0;
+    box-shadow: 0 1px 0 #eeeef2;
+  }
+}
+
+/* Phone */
 @media (max-width: 700px) {
   .navbar-admin {
     min-height: 65px;
@@ -184,8 +210,8 @@
 
   .navbar-avatar {
     width: 36px;
-    height: 36px;
     font-size: 12px;
+    border-radius: 10px;
   }
 
   .navbar-user,

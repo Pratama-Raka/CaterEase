@@ -339,25 +339,12 @@
   background: #e8b900;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .settings-page {
     padding-right: 28px;
     padding-left: 28px;
-  }
-
-  .settings-layout {
-    grid-template-columns: minmax(150px, 0.65fr) minmax(0, 1.7fr);
-    gap: 24px;
-  }
-
-  .profile-editor {
-    padding: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .settings-page {
-    padding: 68px 20px 40px;
+    padding-top: 68px;
+    padding-bottom: 40px;
   }
 
   .settings-heading {
@@ -374,7 +361,7 @@
     grid-template-columns: 56px minmax(0, 1fr);
     align-items: center;
     column-gap: 14px;
-    padding: 0 0 20px;
+    padding: 16px 14px 20px;
     border-right: 0;
     border-bottom: 1px solid #eeeef2;
   }
@@ -411,7 +398,7 @@
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .profile-editor-heading {
     align-items: flex-start;
     flex-direction: column;
