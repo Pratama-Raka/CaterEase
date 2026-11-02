@@ -1,12 +1,45 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginRequest } from "../api/auth";
 import stockPhoto from "../assets/login-stock.png";
 import "./LoginPage.css";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const handleLogin = (e) => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    remember: false,
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    setError("");
+    setLoading(true);
+
+    try {
+      const { token, user } = await loginRequest(form.email);
+
+      const storage = form.remember ? localStorage : sessionStorage;
+      storage.setItem("token", token);
+      storage.setItem("user", JSON.stringify(user));
+
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,21 +62,47 @@ function LoginPage() {
           <form onSubmit={handleLogin}>
             <label className="field-label" htmlFor="email">
               <span>Email address</span>
-              <input id="email" type="email" required />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
             </label>
 
             <label className="field-label" htmlFor="password">
               <span>Password</span>
-              <input id="password" type="password" required />
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
             </label>
 
             <label className="remember-row" htmlFor="remember-me">
-              <input id="remember-me" type="checkbox" />
+              <input
+                id="remember-me"
+                name="remember"
+                type="checkbox"
+                checked={form.remember}
+                onChange={handleChange}
+              />
               <span>Remember me</span>
             </label>
 
-            <button type="submit" className="primary-button">
-              Login
+            {error && (
+              <p className="form-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <button type="submit" className="primary-button" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
         </div>

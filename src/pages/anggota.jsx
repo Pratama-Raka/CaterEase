@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Anggota.css'; // Ini buat manggil desain CSS-nya
 
 const Anggota = () => {
