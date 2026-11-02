@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
+import { clearSession } from "../api/session";
 import {
   BookOpen,
   ChevronRight,
@@ -57,12 +58,11 @@ function Sidebar() {
       setIsCollapsed(true);
     }
   }
-
   function handleLogout() {
+    clearSession();
     setShowLogout(false);
-    navigate("/login");
+    navigate("/login", { replace: true });
   }
-
   return (
     <aside className={`navbar${isCollapsed ? " navbar-collapsed" : ""}`}>
       <div className="navbar-header">

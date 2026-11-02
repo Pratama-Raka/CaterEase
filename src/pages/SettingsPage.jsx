@@ -10,28 +10,33 @@ import {
 } from "lucide-react";
 import cateringBuffet from "../assets/catering-buffet.jpg";
 import "./SettingsPage.css";
+import { getSession, updateSessionUser } from "../api/session";
 
-const PROFILE_KEY = "caterease.profile";
-const DEFAULT_PROFILE = {
-  fullName: "Admin CaterEase",
-  email: "admin@caterease.id",
-  phone: "",
-};
+function getProfileKey() {
+  return `caterease.profile.${getSession()?.user?.id}`;
+}
 
 function loadProfile() {
-  try {
-    const storedProfile = JSON.parse(
-      window.localStorage.getItem(PROFILE_KEY) || "{}",
-    );
+  const user = getSession()?.user;
 
+  const base = {
+    fullName: user?.name ?? "",
+    email: user?.email ?? "",
+    phone: user?.phone ?? "",
+  };
+
+  try {
+    const stored = JSON.parse(
+      window.localStorage.getItem(getProfileKey()) || "{}",
+    );
     return Object.fromEntries(
-      Object.entries(DEFAULT_PROFILE).map(([key, fallback]) => [
+      Object.entries(base).map(([key, fallback]) => [
         key,
-        typeof storedProfile[key] === "string" ? storedProfile[key] : fallback,
+        typeof stored[key] === "string" ? stored[key] : fallback,
       ]),
     );
   } catch {
-    return DEFAULT_PROFILE;
+    return base;
   }
 }
 
@@ -58,7 +63,12 @@ function SettingsPage() {
     event.preventDefault();
 
     try {
-      window.localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+      window.localStorage.setItem(getProfileKey(), JSON.stringify(profile));
+      updateSessionUser({
+        name: profile.fullName,
+        email: profile.email,
+        phone: profile.phone,
+      });
       setStatus("Perubahan profil berhasil disimpan.");
       setIsEditing(false);
     } catch {
@@ -212,9 +222,7 @@ function SettingsPage() {
         <div className="kitchen-note-copy">
           <CookingPot size={21} aria-hidden="true" />
           <h2 id="kitchen-note-title">Dari dapur, untuk setiap meja.</h2>
-          <p>
-            Perhatian pada detail adalah bumbu terbaik dalam setiap sajian.
-          </p>
+          <p>Perhatian pada detail adalah bumbu terbaik dalam setiap sajian.</p>
         </div>
         <img
           src={cateringBuffet}
