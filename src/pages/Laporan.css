@@ -443,8 +443,16 @@
     font-size: 11px;
 }
 
-/* Tampilan tablet dan ponsel */
-@media (max-width: 1050px) {
+/* Tampilan tablet */
+@media (max-width: 768px) {
+    .laporan-page {
+        padding: 20px 16px 30px;
+    }
+
+    .laporan-toolbar {
+        flex-wrap: wrap;
+    }
+
     .laporan-summary-grid {
         grid-template-columns: 1fr;
     }
@@ -455,22 +463,35 @@
     }
 }
 
-@media (max-width: 700px) {
+/* Tampilan ponsel */
+@media (max-width: 480px) {
     .laporan-page {
-        padding: 16px 12px 28px;
+        padding: 14px 10px 24px;
+    }
+
+    .laporan-toolbar {
+        flex-direction: column;
+    }
+
+    .laporan-select {
+        width: 100%;
+        min-width: 0;
     }
 
     .laporan-tabs {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
     }
 
     .laporan-tab {
+        min-height: 44px;
         justify-content: flex-start;
-        font-size: 12px;
+        padding: 9px;
+        font-size: 11px;
     }
 
     .laporan-summary {
-        padding: 14px;
+        padding: 13px;
     }
 
     .laporan-summary-heading,
@@ -486,10 +507,23 @@
 
     .laporan-chart-card,
     .laporan-status-card {
-        padding: 13px;
+        padding: 12px;
+    }
+
+    .laporan-chart svg {
+        height: 160px;
+    }
+
+    .laporan-highlight strong {
+        font-size: 16px;
     }
 
     .laporan-table-card {
-        padding: 14px 12px 10px;
+        padding: 12px 10px 10px;
+    }
+
+    .laporan-table-wrap th,
+    .laporan-table-wrap td {
+        padding: 10px 9px;
     }
 }
