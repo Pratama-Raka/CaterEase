@@ -1,531 +1,546 @@
-/* CaterEase Dashboard — versi ringkas */
+/* CaterEase Dashboard */
 
-/* Dasar halaman */
 .ce-dashboard {
-  --ce-yellow: #f5ca4b;
-  --ce-ink: #26364c;
-  --ce-muted: #8792a3;
-  width: 100%;
-  max-width: 1440px;
-  min-width: 0;
-  margin: 0 auto;
-  padding: 20px 24px 32px;
-  color: var(--ce-ink);
-  font: 13px Arial, "Segoe UI", sans-serif;
-  box-sizing: border-box;
+    --ce-yellow: #f5ca4b;
+    --ce-ink: #26364c;
+    --ce-muted: #8792a3;
+    width: 100%;
+    max-width: 1440px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 20px 24px 32px;
+    color: var(--ce-ink);
+    font: 13px Arial, "Segoe UI", sans-serif;
+    box-sizing: border-box;
 }
 
 .ce-dashboard *,
 .ce-dashboard *::before,
 .ce-dashboard *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .ce-dashboard button,
 .ce-dashboard input,
 .ce-dashboard select {
-  font: inherit;
+    font: inherit;
 }
 
 .ce-dashboard button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .ce-dashboard button:focus-visible,
 .ce-dashboard input:focus-visible,
 .ce-dashboard select:focus-visible {
-  outline: 2px solid #d7a90c;
-  outline-offset: 2px;
+    outline: 2px solid #d7a90c;
+    outline-offset: 2px;
 }
 
-/* Judul dashboard */
+/* Judul dan kartu ringkasan */
 .ce-page-heading {
-  margin: 0 0 16px;
+    margin: 0 0 16px;
 }
 
 .ce-page-heading h1 {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 700;
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .ce-page-heading p,
 .ce-members-heading p {
-  margin: 5px 0 0;
-  color: var(--ce-muted);
-  font-size: 13px;
+    margin: 5px 0 0;
+    color: var(--ce-muted);
+    font-size: 13px;
 }
 
-/* Tiga kartu ringkasan: kartu dipendekkan, teks tetap besar */
 .ce-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
 }
 
 .ce-stat {
-  display: flex;
-  min-height: 112px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  padding: 13px 20px;
-  border-radius: 14px;
-  background: var(--ce-yellow);
-  box-shadow: 0 3px 9px #0000000d;
+    display: flex;
+    min-height: 112px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 13px 20px;
+    border-radius: 14px;
+    background: var(--ce-yellow);
+    box-shadow: 0 3px 9px #0000000d;
 }
 
-.ce-stat > span,
-.ce-income > span {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
+.ce-stat>span,
+.ce-income>span {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .ce-stat strong,
 .ce-income strong {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 2px 0;
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.15;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
 }
 
 .ce-stat strong svg,
 .ce-income strong svg {
-  color: #169b4b;
-  flex: none;
+    color: #169b4b;
+    flex: none;
 }
 
 .ce-stat small {
-  color: #665522;
-  font-size: 13px;
+    color: #665522;
+    font-size: 13px;
 }
 
-/* Grafik garis dan kartu pendapatan */
+/* Grafik dan pendapatan */
 .ce-analytics {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
-  align-items: start;
-  gap: 14px;
-  margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(240px, .85fr);
+    align-items: start;
+    gap: 14px;
+    margin-bottom: 16px;
 }
 
 .ce-panel {
-  min-width: 0;
-  padding: 17px;
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 3px 12px #0000000b;
+    min-width: 0;
+    padding: 17px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 3px 12px #0000000b;
 }
 
 .ce-panel-heading,
 .ce-members-heading,
 .ce-table-tools,
 .ce-pagination,
-.ce-pagination > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+.ce-pagination>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .ce-panel-heading h2,
 .ce-members-heading h2 {
-  margin: 0;
-  font-size: 16px;
+    margin: 0;
+    font-size: 16px;
 }
 
-.ce-panel-heading > span {
-  color: var(--ce-muted);
-  font-size: 12px;
+.ce-panel-heading>span {
+    color: var(--ce-muted);
+    font-size: 12px;
 }
 
 .ce-chart-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
-  color: #777;
-  font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    color: #777;
+    font-size: 12px;
 }
 
 .ce-chart-legend span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.ce-legend-in::before,
-.ce-legend-out::before {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  content: "";
+.ce-legend-incoming,
+.ce-legend-completed {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    border-radius: 50%;
 }
 
-.ce-legend-in::before {
-  background: #18c5b0;
+.ce-legend-incoming {
+    background: #18c5b0;
 }
 
-.ce-legend-out::before {
-  background: #f17c9f;
+.ce-legend-completed {
+    background: #f17c9f;
 }
 
 .ce-line-chart {
-  display: block;
-  width: 100%;
-  height: 145px;
-  margin-top: 8px;
-  overflow: visible;
+    display: block;
+    width: 100%;
+    height: 220px;
+    margin-top: 12px;
+    overflow: visible;
 }
 
 .ce-income {
-  display: flex;
-  min-height: 175px;
-  align-self: start;
-  flex-direction: column;
-  justify-content: center;
-  padding: 18px 22px;
-  border-radius: 14px;
-  background: var(--ce-yellow);
-  box-shadow: 0 3px 12px #0000000b;
+    display: flex;
+    min-height: 175px;
+    align-self: start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 22px;
+    border-radius: 14px;
+    background: var(--ce-yellow);
+    box-shadow: 0 3px 12px #0000000b;
 }
 
 .ce-income strong {
-  margin: 12px 0 7px;
-  font-size: clamp(27px, 2.5vw, 36px);
-  white-space: nowrap;
+    margin: 12px 0 7px;
+    font-size: clamp(27px, 2.5vw, 36px);
+    white-space: nowrap;
 }
 
 .ce-income p {
-  margin: 0;
-  color: #80602c;
-  font-size: 13px;
+    margin: 0;
+    color: #80602c;
+    font-size: 13px;
 }
 
-/* Tabel member */
+/* Daftar member */
 .ce-members {
-  padding: 18px;
+    padding: 18px;
 }
 
 .ce-members-heading {
-  margin-bottom: 14px;
+    margin-bottom: 14px;
 }
 
 .ce-export,
 .ce-primary,
 .ce-danger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border: 0;
-  border-radius: 8px;
-  padding: 9px 13px;
-  background: var(--ce-yellow);
-  color: #28231a;
-  font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 13px;
+    background: var(--ce-yellow);
+    color: #28231a;
+    font-weight: 600;
 }
 
 .ce-table-tools {
-  justify-content: flex-start;
-  margin-bottom: 12px;
+    justify-content: flex-start;
+    margin-bottom: 12px;
 }
 
 .ce-search {
-  display: flex;
-  width: min(360px, 100%);
-  height: 38px;
-  align-items: center;
-  gap: 9px;
-  padding: 0 12px;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  color: #999;
-  background: #fafafa;
+    display: flex;
+    width: min(360px, 100%);
+    height: 38px;
+    align-items: center;
+    gap: 9px;
+    padding: 0 12px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    color: #999;
+    background: #fafafa;
 }
 
 .ce-search input {
-  width: 100%;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #333;
-  font-size: 12px;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #333;
+    font-size: 12px;
 }
 
 .ce-table-tools select,
 .ce-modal select,
 .ce-modal input {
-  min-height: 38px;
-  padding: 8px 10px;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  background: #fff;
-  color: #333;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
 }
 
 .ce-table-scroll {
-  width: 100%;
-  overflow-x: auto;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .ce-members-table {
-  width: 100%;
-  min-width: 620px;
-  border-collapse: collapse;
-  text-align: left;
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    text-align: left;
 }
 
 .ce-members-table th {
-  padding: 12px 10px;
-  border-bottom: 1px solid #eee;
-  color: #777;
-  font-size: 11px;
-  font-weight: 600;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    color: #777;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .ce-members-table td {
-  padding: 11px 10px;
-  border-bottom: 1px solid #f0f0f0;
-  color: #555;
-  font-size: 12px;
+    padding: 11px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+    font-size: 12px;
 }
 
 .ce-member {
-  display: flex;
-  min-width: 160px;
-  align-items: center;
-  gap: 9px;
+    display: flex;
+    min-width: 160px;
+    align-items: center;
+    gap: 9px;
 }
 
 .ce-avatar {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: none;
-  place-items: center;
-  border-radius: 50%;
-  color: #594b3d;
-  font-weight: 700;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: none;
+    place-items: center;
+    border-radius: 50%;
+    color: #594b3d;
+    font-weight: 700;
 }
 
 .ce-member strong,
 .ce-member small {
-  display: block;
+    display: block;
 }
 
 .ce-member strong {
-  color: #333;
-  font-size: 12px;
+    color: #333;
+    font-size: 12px;
 }
 
 .ce-member small {
-  margin-top: 3px;
-  color: #999;
-  font-size: 10px;
+    margin-top: 3px;
+    color: #999;
+    font-size: 10px;
 }
 
 .ce-status {
-  display: inline-block;
-  padding: 5px 9px;
-  border-radius: 20px;
-  background: #fff3d0;
-  color: #98721b;
-  font-size: 10px;
-  white-space: nowrap;
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #fff3d0;
+    color: #98721b;
+    font-size: 10px;
+    white-space: nowrap;
 }
 
 .ce-status.is-completed {
-  background: #e5f3e6;
-  color: #42834b;
-}
-
-.ce-actions {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-}
-
-.ce-actions button,
-.ce-pagination button,
-.ce-modal-heading button,
-.ce-toast button {
-  display: inline-grid;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  color: #777;
-}
-
-.ce-actions button:hover,
-.ce-pagination button:hover {
-  color: #b38a17;
+    background: #e5f3e6;
+    color: #42834b;
 }
 
 .ce-empty {
-  padding: 28px !important;
-  color: #999 !important;
-  text-align: center;
+    padding: 28px !important;
+    color: #999 !important;
+    text-align: center;
 }
 
 .ce-pagination {
-  margin-top: 14px;
-  color: #888;
-  font-size: 11px;
+    margin-top: 14px;
+    color: #888;
+    font-size: 11px;
 }
 
-.ce-pagination > div {
-  gap: 10px;
+.ce-pagination>div {
+    gap: 10px;
+}
+
+.ce-pagination button,
+.ce-modal-heading button,
+.ce-toast button {
+    display: inline-grid;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    color: #777;
 }
 
 .ce-pagination button:disabled {
-  cursor: not-allowed;
-  opacity: 0.3;
+    cursor: not-allowed;
+    opacity: .3;
 }
 
-/* Notifikasi dan dialog */
+/* Notifikasi dan dialog member */
 .ce-toast {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  max-width: min(360px, calc(100vw - 32px));
-  padding: 12px 14px;
-  border-radius: 9px;
-  background: #252525;
-  color: #fff;
-  box-shadow: 0 5px 20px #0002;
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    max-width: min(360px, calc(100vw - 32px));
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: #252525;
+    color: #fff;
+    box-shadow: 0 5px 20px #0002;
 }
 
 .ce-toast button {
-  color: #fff;
-}
-
-.ce-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
-  display: grid;
-  place-items: center;
-  padding: 18px;
-  background: #0006;
+    color: #fff;
 }
 
 .ce-modal {
-  width: min(100%, 420px);
-  padding: 22px;
-  border-radius: 13px;
-  background: #fff;
-  box-shadow: 0 12px 35px #0003;
+    width: min(100%, 420px);
+    padding: 22px;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 12px 35px #0003;
 }
 
 .ce-modal-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
 }
 
 .ce-modal-heading h2 {
-  margin: 0;
-  font-size: 18px;
+    margin: 0;
+    font-size: 18px;
 }
 
 .ce-modal p {
-  margin: 10px 0;
-  color: #555;
+    margin: 10px 0;
+    color: #555;
 }
 
 .ce-modal form {
-  display: grid;
-  gap: 12px;
+    display: grid;
+    gap: 12px;
 }
 
 .ce-modal form label {
-  display: grid;
-  gap: 6px;
-  color: #555;
-  font-size: 12px;
+    display: grid;
+    gap: 6px;
+    color: #555;
+    font-size: 12px;
 }
 
 .ce-modal input,
 .ce-modal select {
-  width: 100%;
+    width: 100%;
 }
 
 .ce-modal .ce-primary,
 .ce-modal .ce-danger {
-  margin-top: 8px;
+    margin-top: 8px;
 }
 
 .ce-danger {
-  background: #d9434e;
-  color: #fff;
+    background: #d9434e;
+    color: #fff;
 }
 
-/* Tampilan tablet dan ponsel */
-@media (max-width: 900px) {
-  .ce-analytics {
-    grid-template-columns: 1fr;
-  }
+/* Tablet */
+@media (max-width: 768px) {
+    .ce-dashboard {
+        padding: 18px 16px 28px;
+    }
 
-  .ce-income {
-    min-height: 140px;
-  }
+    .ce-analytics {
+        grid-template-columns: 1fr;
+    }
+
+    .ce-income {
+        min-height: 140px;
+    }
+
+    .ce-line-chart {
+        height: 210px;
+    }
 }
 
-@media (max-width: 600px) {
-  .ce-dashboard {
-    padding: 16px 12px 24px;
-  }
+/* Ponsel */
+@media (max-width: 480px) {
+    .ce-dashboard {
+        padding: 14px 10px 22px;
+    }
 
-  .ce-page-heading h1 {
-    font-size: 26px;
-  }
+    .ce-page-heading h1 {
+        font-size: 25px;
+    }
 
-  .ce-stats {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+    .ce-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 
-  .ce-stat {
-    min-height: 105px;
-  }
+    .ce-stat {
+        min-height: 100px;
+        padding: 12px 16px;
+    }
 
-  .ce-panel,
-  .ce-members {
-    padding: 14px;
-  }
+    .ce-stat strong {
+        font-size: 34px;
+    }
 
-  .ce-members-heading {
-    align-items: flex-start;
-  }
+    .ce-panel,
+    .ce-members {
+        padding: 13px;
+    }
 
-  .ce-table-tools {
-    align-items: stretch;
-    flex-direction: column;
-  }
+    .ce-income {
+        min-height: 130px;
+        padding: 16px;
+    }
 
-  .ce-search,
-  .ce-table-tools select {
-    width: 100%;
-  }
+    .ce-income strong {
+        font-size: 25px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
 
-  .ce-pagination {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+    .ce-members-heading {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
 
-  .ce-line-chart {
-    height: 150px;
-  }
+    .ce-export {
+        width: 100%;
+    }
+
+    .ce-table-tools {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .ce-search,
+    .ce-table-tools select {
+        width: 100%;
+    }
+
+    .ce-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ce-line-chart {
+        height: 185px;
+    }
+
+    .ce-chart-legend {
+        gap: 10px;
+    }
+
+    .ce-chart-legend span {
+        font-size: 11px;
+    }
 }
