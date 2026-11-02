@@ -28,6 +28,9 @@
   padding: 0;
   margin-left: 0;
 }
+.drawer-overlay {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .app {
@@ -46,5 +49,8 @@
     min-height: 100vh;
     height: auto;
     padding: 0;
+  }
+  .drawer-overlay {
+    display: block;
   }
 }

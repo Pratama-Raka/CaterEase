@@ -5,13 +5,11 @@ import {
   Mail,
   LayoutGrid,
   ChevronDown,
+  Menu,
 } from "lucide-react";
-import { useState } from "react";
 import "./Navbar.css";
 
-function Navbar() {
-  const [cari, setCari] = useState("");
-
+function Navbar({ cari, setCari, onMenuClick }) {
   const notifikasi = [
     { Icon: Bell, jumlah: 12 },
     { Icon: CalendarDays, jumlah: 5 },
@@ -21,6 +19,16 @@ function Navbar() {
 
   return (
     <header className="navbar-admin">
+      {/* Hamburger (mobile only) */}
+      <button
+        type="button"
+        className="navbar-menu-btn"
+        onClick={onMenuClick}
+        aria-label="Buka menu"
+      >
+        <Menu size={22} aria-hidden="true" />
+      </button>
+
       {/* Pencarian */}
       <div className="navbar-search">
         <Search size={21} />
@@ -36,7 +44,7 @@ function Navbar() {
         <div className="navbar-icons">
           {notifikasi.map(({ Icon, jumlah, merah }, i) => (
             <button
-              className="navbar-icon"
+              className="navbar-admin-icon"
               key={i}
               type="button"
               aria-label={`Notifikasi ${i + 1}`}
