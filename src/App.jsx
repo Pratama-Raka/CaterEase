@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -12,7 +12,6 @@ import SettingsPage from "./pages/SettingsPage";
 import Anggota from "./pages/anggota";
 import LoginPage from "./pages/LoginPage";
 import { getSession } from "./api/session";
-import "./theme.css";
 import "./App.css";
 
 function ProtectedRoute() {
@@ -21,22 +20,37 @@ function ProtectedRoute() {
 
 function App() {
   const [cari, setCari] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const showSidebar = !isLoginPage && getSession();
 
+  // Close the drawer whenever the page changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <div className={`app ${isLoginPage ? "app-auth" : ""}`}>
-      {showSidebar && <Sidebar />}
+      {showSidebar && (
+        <Sidebar mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      )}
+
+      {showSidebar && mobileOpen && (
+        <div className="drawer-overlay" onClick={() => setMobileOpen(false)} />
+      )}
 
       <main
-       
         className={`app-main ${isLoginPage ? "auth-main" : ""}`}
-       
         aria-label="Konten dashboard"
-      
       >
-        {!isLoginPage && <Navbar cari={cari} setCari={setCari} />}
+        {!isLoginPage && (
+          <Navbar
+            cari={cari}
+            setCari={setCari}
+            onMenuClick={() => setMobileOpen(true)}
+          />
+        )}
 
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
