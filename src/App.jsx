@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
-
 import Dashboard from "./pages/Dashboard";
 import PaketCatering from "./pages/PaketCatering";
 import MenuKatering from "./pages/MenuKatering";
