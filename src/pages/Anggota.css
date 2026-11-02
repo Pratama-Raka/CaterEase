@@ -284,3 +284,40 @@
     z-index: 1001;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  .filter-inputs {
+    flex-direction: column;
+    width: 100%;
+  }
+  .filter-inputs input, 
+  .filter-inputs select, 
+  .filter-inputs div {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .anggota-container {
+    padding: 16px;
+  }
+  .header-title {
+    font-size: 20px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-content {
+    padding: 20px;
+    margin: 15px;
+  }
+}
